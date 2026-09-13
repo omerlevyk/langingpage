@@ -34,7 +34,7 @@ export default function App() {
     <div dir="rtl" lang="he" className="brutal-page">
       <nav className="main-nav" aria-label="ניווט ראשי">
         <a href="#top" className="logo-mark">
-          NSL*
+          <img src={logoIcon} alt="NSL logo" />
         </a>
         <div className="nav-links">
           <a href="#work">הספר</a>
