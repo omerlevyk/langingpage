@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=Heebo:wght@400;500;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
 
 :root {
   --paper: #f1ecd9;
@@ -28,7 +28,7 @@ html {
 body {
   background: var(--paper);
   color: var(--ink);
-  font-family: 'Heebo', sans-serif;
+  font-family: 'Courier Prime', monospace;
 }
 
 a {
@@ -59,7 +59,7 @@ a {
 
 .logo-mark {
   text-decoration: none;
-  font-family: 'Rubik Mono One', sans-serif;
+  font-family: 'Courier Prime', monospace;
   font-size: clamp(1rem, 2vw, 1.2rem);
   letter-spacing: 0.02em;
 }
@@ -109,7 +109,7 @@ a {
 
 .hero-title {
   margin: 0.8rem 0 0;
-  font-family: 'Rubik Mono One', sans-serif;
+  font-family: 'Courier Prime', monospace;
   font-size: clamp(2rem, 8vw, 4.5rem);
   line-height: 1.04;
   max-width: 11ch;
@@ -193,7 +193,7 @@ a {
 .book-card h2 {
   margin: 0;
   font-size: clamp(1.3rem, 3.4vw, 2rem);
-  font-family: 'Rubik Mono One', sans-serif;
+  font-family: 'Courier Prime', monospace;
   line-height: 1.1;
 }
 
@@ -228,7 +228,7 @@ a {
 .about-block h3,
 .contact-block h3 {
   margin: 0;
-  font-family: 'Rubik Mono One', sans-serif;
+  font-family: 'Courier Prime', monospace;
   font-size: clamp(1.2rem, 3vw, 1.7rem);
 }
 
