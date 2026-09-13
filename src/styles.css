@@ -8,6 +8,8 @@
   --card: #f7f2e2;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap');
+
 * {
   box-sizing: border-box;
 }
@@ -26,7 +28,8 @@ html {
 body {
   background: var(--paper);
   color: var(--ink);
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Rubik', 'Noto Sans Hebrew', sans-serif;
+  font-weight: 300;
 }
 
 a {
@@ -57,9 +60,10 @@ a {
 
 .logo-mark {
   text-decoration: none;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Rubik', 'Noto Sans Hebrew', sans-serif;
   font-size: clamp(1rem, 2vw, 1.2rem);
   letter-spacing: 0.02em;
+  font-weight: 500;
 }
 
 .nav-links {
@@ -107,10 +111,11 @@ a {
 
 .hero-title {
   margin: 0.8rem 0 0;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Rubik', 'Noto Sans Hebrew', sans-serif;
   font-size: clamp(2rem, 8vw, 4.5rem);
-  line-height: 1.04;
+  line-height: 1.1;
   max-width: 11ch;
+  font-weight: 300;
 }
 
 .hero-divider {
@@ -191,8 +196,9 @@ a {
 .book-card h2 {
   margin: 0;
   font-size: clamp(1.3rem, 3.4vw, 2rem);
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Rubik', 'Noto Sans Hebrew', sans-serif;
   line-height: 1.1;
+  font-weight: 400;
 }
 
 .card-id {
@@ -226,8 +232,9 @@ a {
 .about-block h3,
 .contact-block h3 {
   margin: 0;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Rubik', 'Noto Sans Hebrew', sans-serif;
   font-size: clamp(1.2rem, 3vw, 1.7rem);
+  font-weight: 400;
 }
 
 .about-block p,
