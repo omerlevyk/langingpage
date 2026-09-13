@@ -125,6 +125,13 @@ a {
   background: var(--red);
 }
 
+.hero-author {
+  margin: -0.35rem 0 1rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+
 .hero-subtitle {
   margin: 0;
   font-size: 1rem;
@@ -148,22 +155,45 @@ a {
   background: rgba(0, 0, 0, 0.03);
 }
 
-.hero-cta {
+.hero-strip {
   margin-top: 1.5rem;
-  display: inline-block;
-  text-decoration: none;
-  border: 4px solid var(--line);
+  width: 100%;
+  max-width: 16rem;
+  height: 1.5rem;
   background: var(--line);
-  color: var(--paper);
-  padding: 0.8rem 1rem;
-  font-weight: 800;
-  font-size: 0.85rem;
-  letter-spacing: 0.07em;
+  border: 4px solid var(--line);
 }
 
-.hero-cta:hover {
-  background: var(--red);
-  border-color: var(--red);
+.hero-icon-links {
+  margin-top: 0.7rem;
+  display: flex;
+  gap: 0.55rem;
+}
+
+.icon-link {
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 3px solid var(--line);
+  background: var(--paper);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.78rem;
+  transition: background-color 140ms ease, color 140ms ease, transform 140ms ease;
+}
+
+.icon-link:hover {
+  background: var(--line);
+  color: var(--paper);
+  transform: translateY(-2px);
+}
+
+.icon-link img {
+  width: 75%;
+  height: 75%;
+  object-fit: contain;
 }
 
 .scroll-pane {
@@ -292,7 +322,7 @@ a {
 
 @media (min-width: 1080px) {
   .split-layout {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 2fr;
   }
 
   .hero-pane {
@@ -334,5 +364,14 @@ a {
   .quote-strip,
   .contact-block {
     padding: 0.85rem;
+  }
+
+  .hero-strip {
+    max-width: 12rem;
+  }
+
+  .icon-link {
+    width: 2.35rem;
+    height: 2.35rem;
   }
 }

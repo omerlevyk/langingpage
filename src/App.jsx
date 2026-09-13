@@ -44,6 +44,7 @@ export default function App() {
           <p className="hero-label">פרויקט ספר / דף נחיתה קונספטואלי</p>
           <h1 className="hero-title">הקריסה הבלתי נראית</h1>
           <div className="hero-divider" />
+          <p className="hero-author">ניצן שלף לוי</p>
           <p className="hero-subtitle">
             מטאפורה אדריכלית לקריסה חברתית ופוליטית: שבר שנבנה לאט, מוסתר מהעין,
             ומתפרץ בבת אחת.
@@ -53,9 +54,33 @@ export default function App() {
             <span>זיכרון עירוני</span>
             <span>אדריכלות זוכרת</span>
           </div>
-          <a href="#work" className="hero-cta">
-            כניסה לחוויית הספר
-          </a>
+          <div className="hero-strip" aria-hidden="true" />
+          <div className="hero-icon-links" aria-label="קישורים מהירים">
+            <a className="icon-link" href="/logo.png" target="_blank" rel="noreferrer" aria-label="לוגו">
+              <img src="/logo.png" alt="לוגו" loading="lazy" />
+            </a>
+            <a
+              className="icon-link"
+              href="https://www.instagram.com/nitzan_shelef/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram"
+            >
+              IG
+            </a>
+            <a className="icon-link" href="mailto:nitzan2112@gmail.com" aria-label="Email">
+              @
+            </a>
+            <a
+              className="icon-link"
+              href="https://nitzanshelef.myportfolio.com"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Portfolio"
+            >
+              PF
+            </a>
+          </div>
         </section>
 
         <section className="scroll-pane" id="work">
