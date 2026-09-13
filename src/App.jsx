@@ -1,174 +1,105 @@
-const heroPoints = [
+const cards = [
   {
-    label: 'שכבה נסתרת',
-    text: 'מה שנשבר באמת מתחיל הרבה לפני שהעין מבחינה בכך.',
+    id: '01',
+    title: 'תהליך סמוי',
+    subtitle: 'הקריסה לא מתחילה ברעש. היא מצטברת בשקט.',
+    body: 'כמו בולען, גם שבר חברתי מתפתח מתחת לפני השטח עד לרגע החשיפה.',
   },
   {
-    label: 'זיכרון עירוני',
-    text: 'העיר שומרת בתוכה עקבות, גם כשהן כמעט נעלמות.',
+    id: '02',
+    title: 'זיכרון בחומר',
+    subtitle: 'לא מוחקים את הסדק. לומדים לקרוא אותו.',
+    body: 'הספר מציע שפה אדריכלית שמכילה טראומה במקום להסתיר אותה.',
   },
   {
-    label: 'אדריכלות זוכרת',
-    text: 'המבנה לא מוחק את הפצע — הוא לומד לחיות לידו.',
+    id: '03',
+    title: 'עיר כעדות',
+    subtitle: 'המרחב העירוני מתעד את מה שהחברה מנסה לשכוח.',
+    body: 'תל אביב משמשת כמעבדה לשאלות של יציבות, שבר והמשכיות.',
   },
-];
-
-const visualTraits = [
-  'שחור עמוק, ורוד מעושן, ולבן רך',
-  'כותרת בסריף דרמטי וטקסט קריא ונקי',
-  'פריסה עריכתית, מרווחת, ואטמוספרית',
+  {
+    id: '04',
+    title: 'ספר כאובייקט',
+    subtitle: 'אובייקט עריכתי עם נוכחות חומרית חזקה.',
+    body: 'שחור עמוק, קווים חדים וטיפוגרפיה שמחברת בין פואטיקה למבנה.',
+  },
 ];
 
 export default function App() {
   return (
-    <div className="page-shell">
-      <header className="topbar">
-        <a className="brand" href="#home">
-          קריסת האין־נראה
+    <div dir="rtl" lang="he" className="brutal-page">
+      <nav className="main-nav" aria-label="ניווט ראשי">
+        <a href="#top" className="logo-mark">
+          NSL*
         </a>
-        <nav className="nav" aria-label="ניווט ראשי">
-          <a href="#story">הסיפור</a>
-          <a href="#concept">הרעיון</a>
-          <a href="#visuals">שפה חזותית</a>
-          <a className="nav-cta" href="#contact">
-            בקרוב
+        <div className="nav-links">
+          <a href="#work">הספר</a>
+          <a href="#about">אודות ניצן</a>
+          <a href="#contact">צור קשר</a>
+        </div>
+      </nav>
+
+      <main className="split-layout" id="top">
+        <section className="hero-pane">
+          <p className="hero-label">פרויקט ספר / דף נחיתה קונספטואלי</p>
+          <h1 className="hero-title">הקריסה הבלתי נראית</h1>
+          <div className="hero-divider" />
+          <p className="hero-subtitle">
+            מטאפורה אדריכלית לקריסה חברתית ופוליטית: שבר שנבנה לאט, מוסתר מהעין,
+            ומתפרץ בבת אחת.
+          </p>
+          <div className="hero-tags">
+            <span>בולען כמטאפורה</span>
+            <span>זיכרון עירוני</span>
+            <span>אדריכלות זוכרת</span>
+          </div>
+          <a href="#work" className="hero-cta">
+            כניסה לחוויית הספר
           </a>
-        </nav>
-      </header>
-
-      <main id="home">
-        <section className="hero">
-          <div className="hero-copy">
-            <p className="eyebrow">דף נחיתה ספרותי / קונספט עיצובי</p>
-            <h1>קריסת האין־נראה</h1>
-            <p className="lead">
-              ספר שמספר על התפוררות שקטה, על מתח שמצטבר מתחת לפני השטח, ועל הרגע שבו
-              מה שנדמה יציב — נחשף כעדין ושביר.
-            </p>
-
-            <div className="hero-actions">
-              <a className="button button-primary" href="#story">
-                להיכנס לסיפור
-              </a>
-              <a className="button button-secondary" href="#visuals">
-                לראות את השפה החזותית
-              </a>
-            </div>
-
-            <ul className="hero-metrics" aria-label="עקרונות מרכזיים">
-              <li>
-                <span>01</span> מתח נסתר
-              </li>
-              <li>
-                <span>02</span> זיכרון אורבני
-              </li>
-              <li>
-                <span>03</span> אדריכלות ורגש
-              </li>
-            </ul>
-          </div>
-
-          <div className="hero-art" aria-hidden="true">
-            <div className="book-spine">קריסת האין־נראה</div>
-            <div className="book-stack book-back"></div>
-            <div className="book-stack book-front"></div>
-            <div className="book-open">
-              <div className="page-left">
-                <div className="line-art line-1" />
-                <div className="line-art line-2" />
-                <div className="line-art line-3" />
-              </div>
-              <div className="page-right">
-                <div className="quote-block">
-                  <p>
-                    "התפוררות לא מתרחשת ברגע.
-                    <br />
-                    היא מצטברת מתחת לפני השטח."
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="floating-card card-a">הרס איטי לפני הקריסה.</div>
-            <div className="floating-card card-b">הזיכרון נשאר בתוך החומר.</div>
-          </div>
         </section>
 
-        <section className="intro-grid" id="story">
-          <article className="panel panel-large">
-            <p className="section-label">הסיפור</p>
-            <h2>קריסה כהליך סמוי, איטי ומצטבר.</h2>
-            <p>
-              בהשראת פרויקט הסיום של ניצן, הדף מתייחס לבולען כמטפורה לקריסה חברתית
-              ופוליטית — תהליך שנבנה בשקט, ורק בסוף נחשף בבת אחת.
-            </p>
-          </article>
-
-          <article className="panel">
-            <p className="section-label">טון</p>
-            <h3>עריכתי, שקט וקולנועי</h3>
-            <p>
-              פריסה מינימלית, ניגודיות חזקה וקצב שמאפשר לטקסט ולתמונה לנשום.
-            </p>
-          </article>
-
-          <article className="panel">
-            <p className="section-label">אווירה</p>
-            <h3>רגשית, מהורהרת ואדריכלית</h3>
-            <p>
-              דף שמרגיש כמו אובייקט ספרותי ולא כמו אתר שיווקי רגיל.
-            </p>
-          </article>
-        </section>
-
-        <section className="story-section" id="concept">
-          <div className="story-header">
-            <p className="section-label">הרעיון</p>
-            <h2>מה הדף צריך לספר</h2>
-          </div>
-
-          <div className="story-cards">
-            {heroPoints.map((item, index) => (
-              <article key={item.label}>
-                <span>{String(index + 1).padStart(2, '0')}</span>
-                <h3>{item.label}</h3>
-                <p>{item.text}</p>
+        <section className="scroll-pane" id="work">
+          <div className="cards-grid">
+            {cards.map((card) => (
+              <article className="book-card" key={card.id}>
+                <header>
+                  <span className="card-id">{card.id}</span>
+                  <h2>{card.title}</h2>
+                </header>
+                <p className="card-subtitle">{card.subtitle}</p>
+                <p className="card-body">{card.body}</p>
               </article>
             ))}
           </div>
-        </section>
 
-        <section className="visual-section" id="visuals">
-          <div className="visual-copy">
-            <p className="section-label">השפה החזותית</p>
-            <h2>אלגנטיות חשוכה עם הרבה אוויר</h2>
+          <section className="about-block" id="about">
+            <h3>אודות</h3>
             <p>
-              להשתמש בטיפוגרפיה דרמטית, במרקם עדין, ובמרווחים נדיבים כדי לבנות חוויה
-              יוקרתית, שקטה ומדויקת.
+              הדף נבנה בהשראת שפת העבודה של ניצן שלף לוי: שילוב בין חשיבה אדריכלית,
+              קומפוזיציה חומרית, ורגישות למתח שבין שבר להמשכיות.
             </p>
-          </div>
+          </section>
 
-          <div className="visual-board">
-            {visualTraits.map((trait, index) => (
-              <div className={`swatch swatch-${index + 1}`} key={trait}>
-                <span>{index === 0 ? 'פלטה' : index === 1 ? 'טיפוגרפיה' : 'פריסה'}</span>
-                <strong>{trait}</strong>
-              </div>
-            ))}
-          </div>
-        </section>
+          <section className="quote-strip" aria-label="ציטוט מרכזי">
+            <p>"התפוררות לא מתרחשת ברגע. היא מצטברת מתחת לפני השטח."</p>
+          </section>
 
-        <section className="quote-section">
-          <p>״הקרקע תחתינו כבר לא יציבה.״</p>
-        </section>
+          <section className="contact-block" id="contact">
+            <h3>בואו נבנה את זה יחד</h3>
+            <p>אפשר להמשיך מכאן לדף השקה מלא, עם גלריה, פרקי תוכן וטפסי השארת פרטים.</p>
+            <a href="mailto:omerelevy03@gmail.com" className="contact-link">
+              כתבו לי
+            </a>
+          </section>
 
-        <section className="cta-section" id="contact">
-          <div>
-            <p className="section-label">השלב הבא</p>
-            <h2>להפוך את הקונספט לדף נחיתה חי ונושם.</h2>
-          </div>
-          <a className="button button-primary" href="mailto:omerelevy03@gmail.com">
-            להתחיל לבנות
-          </a>
+          <footer className="site-footer">
+            <span>© {new Date().getFullYear()} ניצן שלף לוי</span>
+            <div>
+              <a href="https://nitzanshelef.myportfolio.com" target="_blank" rel="noreferrer">
+                Portfolio
+              </a>
+            </div>
+          </footer>
         </section>
       </main>
     </div>
