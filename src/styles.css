@@ -211,6 +211,49 @@ a {
   padding: 1.25rem;
 }
 
+.book-media-column {
+  display: grid;
+  gap: 1rem;
+}
+
+.book-image-block {
+  margin: 0;
+  border: 4px solid var(--line);
+  background: var(--card);
+  padding: 0.65rem;
+  box-shadow: 8px 8px 0 #181818;
+}
+
+.book-image-block img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border: 3px solid var(--line);
+}
+
+.book-image-block figcaption {
+  margin-top: 0.55rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.book-description {
+  margin-top: 1.2rem;
+  border: 4px solid var(--line);
+  background: var(--card);
+  padding: 1rem;
+}
+
+.book-description p {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.85;
+  color: var(--muted);
+}
+
 .cards-grid {
   display: grid;
   gap: 1rem;

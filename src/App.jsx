@@ -1,33 +1,7 @@
 import logoIcon from './assets/logo.png';
 import instagramIcon from './assets/insagram_logo.png';
 import gmailIcon from './assets/gmail_logo.png';
-
-const cards = [
-  {
-    id: '01',
-    title: 'תהליך סמוי',
-    subtitle: 'הקריסה לא מתחילה ברעש. היא מצטברת בשקט.',
-    body: 'כמו בולען, גם שבר חברתי מתפתח מתחת לפני השטח עד לרגע החשיפה.',
-  },
-  {
-    id: '02',
-    title: 'זיכרון בחומר',
-    subtitle: 'לא מוחקים את הסדק. לומדים לקרוא אותו.',
-    body: 'הספר מציע שפה אדריכלית שמכילה טראומה במקום להסתיר אותה.',
-  },
-  {
-    id: '03',
-    title: 'עיר כעדות',
-    subtitle: 'המרחב העירוני מתעד את מה שהחברה מנסה לשכוח.',
-    body: 'תל אביב משמשת כמעבדה לשאלות של יציבות, שבר והמשכיות.',
-  },
-  {
-    id: '04',
-    title: 'ספר כאובייקט',
-    subtitle: 'אובייקט עריכתי עם נוכחות חומרית חזקה.',
-    body: 'שחור עמוק, קווים חדים וטיפוגרפיה שמחברת בין פואטיקה למבנה.',
-  },
-];
+import bookCover from './assets/book-cover.jpeg';
 
 export default function App() {
   return (
@@ -89,37 +63,59 @@ export default function App() {
         </section>
 
         <section className="scroll-pane" id="work">
-          <div className="cards-grid">
-            {cards.map((card) => (
-              <article className="book-card" key={card.id}>
-                <header>
-                  <span className="card-id">{card.id}</span>
-                  <h2>{card.title}</h2>
-                </header>
-                <p className="card-subtitle">{card.subtitle}</p>
-                <p className="card-body">{card.body}</p>
-              </article>
-            ))}
-          </div>
+          <section className="book-media-column" aria-label="ויזואלים מתוך הספר">
+            <figure className="book-image-block">
+              <img src={bookCover} alt="ויזואל מתוך הספר" loading="lazy" />
+              <figcaption>שבר שנרשם בחומר לפני שהוא נראה לעין.</figcaption>
+            </figure>
+            <figure className="book-image-block">
+              <img src={bookCover} alt="ויזואל מתוך הספר" loading="lazy" />
+              <figcaption>האדריכלות חושפת את המנגנון, שכבה אחר שכבה.</figcaption>
+            </figure>
+            <figure className="book-image-block">
+              <img src={bookCover} alt="ויזואל מתוך הספר" loading="lazy" />
+              <figcaption>העיצוב אינו מסתיר את הסדק, הוא מעיד עליו.</figcaption>
+            </figure>
+          </section>
 
-          <section className="about-block" id="about">
-            <h3>אודות</h3>
+          <section className="book-description" id="about">
             <p>
-              הדף נבנה בהשראת שפת העבודה של ניצן שלף לוי: שילוב בין חשיבה אדריכלית,
-              קומפוזיציה חומרית, ורגישות למתח שבין שבר להמשכיות.
+              זה לא קרה ביום אחד. הקריסה החלה הרבה לפני
+              {' '}
+              שהאדמה העירונית נפערה באמת. הערכים, האמון,
+              {' '}
+              הערבות ההדדית — כולם כבר החלו לקרוס פנימה
+              {' '}
+              בסתר, עד לרגע השבר החד שחתך את המרחב העירוני
+              {' '}
+              והחברתי.
+              {' '}
+              האדריכלית ניצן שלף לוי מביאה בפנינו ספר ביכורים
+              {' '}
+              נועז, מפתיע ורדיקלי, המשלב פרוזה פואטית וגרפיקה
+              {' '}
+              אדריכלית פנטסטית. יחד, הן מאפשרות לנו להביט
+              {' '}
+              פנימה, במבט חודר, אל תוך ה"בולען" הישראלי. זה
+              {' '}
+              אינו רק אסון גיאולוגי דמיוני, אלא עדשה חריפה אל
+              {' '}
+              תוך התמוטטות חברתית ופוליטית.
+              {' '}
+              שלף לוי מניחה בפנינו שפה חדשה: אדריכלות החיה לצד
+              {' '}
+              הפצע. ובוראת עבורנו קהילתיות אחרת ומערכת תנועה
+              {' '}
+              אנושית — המאלצת אותנו להיפגש, לראות ולהרגיש.
+              {' '}
+              במסע ארכיטקטוני־נפשי מרתק היא מבקשת מאיתנו
+              {' '}
+              שלא לעצום עיניים, ולהביט היישר אל תוך הסדק, על
+              {' '}
+              מנת לגלות בו כיוונים ואפשרויות חדשות — לחברה
+              {' '}
+              שרוצה, למרות הכל, לבנות את עצמה מתוך ההרס
             </p>
-          </section>
-
-          <section className="quote-strip" aria-label="ציטוט מרכזי">
-            <p>"התפוררות לא מתרחשת ברגע. היא מצטברת מתחת לפני השטח."</p>
-          </section>
-
-          <section className="contact-block" id="contact">
-            <h3>בואו נבנה את זה יחד</h3>
-            <p>אפשר להמשיך מכאן לדף השקה מלא, עם גלריה, פרקי תוכן וטפסי השארת פרטים.</p>
-            <a href="mailto:omerelevy03@gmail.com" className="contact-link">
-              כתבו לי
-            </a>
           </section>
 
           <footer className="site-footer">
