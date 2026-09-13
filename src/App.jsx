@@ -1,3 +1,7 @@
+import logoIcon from './assets/logo.png';
+import instagramIcon from './assets/insagram_logo.png';
+import gmailIcon from './assets/gmail_logo.png';
+
 const cards = [
   {
     id: '01',
@@ -56,8 +60,14 @@ export default function App() {
           </div>
           <div className="hero-strip" aria-hidden="true" />
           <div className="hero-icon-links" aria-label="קישורים מהירים">
-            <a className="icon-link" href="/logo.png" target="_blank" rel="noreferrer" aria-label="לוגו">
-              <img src="/logo.png" alt="לוגו" loading="lazy" />
+            <a
+              className="icon-link"
+              href="https://nitzanshelef.myportfolio.com"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Logo Portfolio"
+            >
+              <img src={logoIcon} alt="לוגו ופורטפוליו" loading="lazy" />
             </a>
             <a
               className="icon-link"
@@ -66,19 +76,14 @@ export default function App() {
               rel="noreferrer"
               aria-label="Instagram"
             >
-              IG
-            </a>
-            <a className="icon-link" href="mailto:nitzan2112@gmail.com" aria-label="Email">
-              @
+              <img src={instagramIcon} alt="אינסטגרם" loading="lazy" />
             </a>
             <a
               className="icon-link"
-              href="https://nitzanshelef.myportfolio.com"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Portfolio"
+              href="mailto:nitzan2112@gmail.com"
+              aria-label="Email"
             >
-              PF
+              <img src={gmailIcon} alt="מייל" loading="lazy" />
             </a>
           </div>
         </section>
