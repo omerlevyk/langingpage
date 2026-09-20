@@ -1,0 +1,35 @@
+# Build and push the landing page container image to the GitLab Container
+# Registry so the homelab cluster can pull it.
+#
+# Uses Kaniko (rootless, no privileged Docker daemon) and GitLab's built-in
+# CI_JOB_TOKEN — no credentials are stored in this file.
+#
+# The cluster pulls: $CI_REGISTRY_IMAGE:latest
+# (registry.gitlab.com/omerlevyk/landingpage_new)
+
+stages:
+  - build
+
+build-image:
+  stage: build
+  image:
+    name: gcr.io/kaniko-project/executor:v1.23.2-debug
+    entrypoint: [""]
+  rules:
+    # Publish :latest and a commit-sha tag only from the default branch.
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  before_script:
+    # Authenticate Kaniko to the GitLab Container Registry using the
+    # short-lived CI_JOB_TOKEN (no static credentials stored anywhere).
+    - mkdir -p /kaniko/.docker
+    - |
+      cat > /kaniko/.docker/config.json <<EOF
+      {"auths":{"${CI_REGISTRY}":{"auth":"$(printf "%s:%s" "${CI_REGISTRY_USER}" "${CI_REGISTRY_PASSWORD}" | base64 | tr -d '\n')"}}}
+      EOF
+  script:
+    - |
+      /kaniko/executor \
+        --context "${CI_PROJECT_DIR}" \
+        --dockerfile "${CI_PROJECT_DIR}/Dockerfile" \
+        --destination "${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHORT_SHA}" \
+        --destination "${CI_REGISTRY_IMAGE}:latest"
