@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 # ---- Build stage ----
-FROM node:20-alpine AS build
+FROM docker.io/library/node:20-alpine AS build
 WORKDIR /app
 
 # Install dependencies first for better layer caching
@@ -15,7 +15,7 @@ RUN npm run build
 # ---- Serve stage ----
 # Unprivileged nginx: runs as non-root (uid 101) and listens on 8080,
 # which suits restricted Kubernetes SecurityContexts in the homelab cluster.
-FROM nginxinc/nginx-unprivileged:1.27-alpine AS runtime
+FROM docker.io/nginxinc/nginx-unprivileged:1.27-alpine AS runtime
 
 # SPA-friendly nginx config (fallback to index.html)
 COPY nginx.conf /etc/nginx/conf.d/default.conf
