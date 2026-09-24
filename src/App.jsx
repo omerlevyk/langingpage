@@ -54,6 +54,16 @@ export default function App() {
             <span>זיכרון עירוני</span>
             <span>אדריכלות זוכרת</span>
           </div>
+          <a
+            className="purchase-link"
+            href="https://pages.greeninvoice.co.il/payments/links/981413e9-2285-4b3c-8118-b964ef499382"
+            target="_blank"
+            rel="noreferrer"
+          >
+            לרכישת הספר
+            <span aria-hidden="true">↗</span>
+          </a>
+          <p className="purchase-note">התשלום מתבצע באופן מאובטח דרך GreenInvoice.</p>
           <div className="hero-strip" aria-hidden="true" />
           <div className="hero-icon-links" aria-label="קישורים מהירים">
             <a

@@ -166,6 +166,41 @@ a {
   background: rgba(0, 0, 0, 0.03);
 }
 
+.purchase-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  width: min(100%, 20rem);
+  margin-top: 1.5rem;
+  padding: 0.85rem 1rem;
+  border: 3px solid var(--line);
+  background: var(--red);
+  color: var(--paper);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 700;
+  transition: background-color 140ms ease, color 140ms ease, transform 140ms ease;
+}
+
+.purchase-link:hover,
+.purchase-link:focus-visible {
+  background: var(--line);
+  color: var(--paper);
+  transform: translateY(-2px);
+}
+
+.purchase-link:focus-visible {
+  outline: 3px solid var(--teal);
+  outline-offset: 3px;
+}
+
+.purchase-note {
+  margin: 0.55rem 0 0;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
 .hero-strip {
   margin-top: 1.5rem;
   width: 100%;
