@@ -47,3 +47,16 @@ the side overlays:
 
 
 make small changes to not lose good progress
+
+
+
+notes2.0:
+
+1. make the image on the top section pull page wide ("ניצן שלף לוי" will be on the image)
+2. remove the title 'העיצוב אינו מסתיר את הסדר, הוא מעיד אליו' and change the text under '01' to be 'הקריסה הבלתי נראת'
+3. in the 02 section remove the title 'העיר בתנועה' and 'תנועה בתוך השבר' and make the vidio page wide (so the '02' and the bottom to change videos will be on the video) also add text under '02' like in '01' but write 'הבלוען כמטפורה להתמוטטות חברתית ופוליטית' and remove the video name text.
+4. in 03 section remove the titles 'הספר מבפנים' and 'מבט אל בין הדפים' and write under 03 'זה לא קרה ביום אחד'
+5. between each section there is a white strip and also between each image in section 03. remove it.
+6. move the "shop" bottom to be lower and not in the middle and the "תוכן" bottom to be upper in the page and insted of clicking it. a mouse hover above it will trigger it and if the mouse leaves the table area that was opened then close it.
+7. the shop overlay revert to how it was before (you can look at the commit "pulishing the website")
+8. last thing. remove the side scroll panel (the one that is move right i mean)
