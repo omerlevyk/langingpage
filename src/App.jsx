@@ -2,27 +2,35 @@ import { useEffect, useRef, useState } from 'react';
 import logoIcon from './assets/logo.png';
 import instagramIcon from './assets/insagram_logo.png';
 import gmailIcon from './assets/gmail_logo.png';
-import bookHero from './assets/portfolio/book-hero.webp';
-import collapseDiagram from './assets/portfolio/collapse-diagram.webp';
-import collapsePlan from './assets/portfolio/collapse-plan.webp';
-import collapseStructure from './assets/portfolio/collapse-structure.webp';
-import roomDetail from './assets/portfolio/room-detail.webp';
-import roomWide from './assets/portfolio/room-wide.webp';
-import roomStairs from './assets/portfolio/room-stairs.webp';
+import coverImage from './assets/refinements/cover.webp';
+import projectImage from './assets/refinements/photo-1.webp';
+import openBookOne from './assets/refinements/open-book-1.webp';
+import openBookTwo from './assets/refinements/open-book-2.webp';
+import isoVideo from './assets/refinements/iso.mp4';
+import isoVideoTwo from './assets/refinements/iso-02.mp4';
+import sinkholeVideo from './assets/refinements/sinkhole.mp4';
 
 const purchaseOptions = [
   { title: 'איסוף עצמי', price: '98 ₪', note: 'רכישה ואיסוף בתיאום מראש', href: 'https://mrng.to/NjxWe42Lv1' },
-  { title: 'כולל משלוח', price: '133 ₪', note: 'הספר יישלח לכתובת שתוזן בעת הרכישה', href: 'https://mrng.to/Y0cbfqulsZ', featured: true },
+  { title: 'כולל משלוח', price: '133 ₪', note: 'הספר יישלח לכתובת שתוזן בעת הרכישה', href: 'https://mrng.to/Y0cbfqulsZ' },
 ];
 
-const slides = [
-  { src: bookHero, alt: 'הספר הקריסה הבלתי נראית מוצג בכריכה סגורה ובמפתח פנימי', label: 'הספר', className: 'hero-slide--book' },
-  { src: collapsePlan, alt: 'קולאז׳ אדריכלי מתוך פרויקט הקריסה הבלתי נראית', label: 'הבולען כמטאפורה', className: 'hero-slide--portrait' },
-  { src: roomWide, alt: 'מודל התערוכה חדר 207 המציג עיר לצד שבר עמוק', label: 'חדר 207', className: 'hero-slide--room' },
+const videos = [
+  { src: isoVideo, label: 'ISO / 01', alt: 'הדמיה אדריכלית של הפרויקט הקריסה הבלתי נראית' },
+  { src: isoVideoTwo, label: 'ISO / 02', alt: 'הדמיה אדריכלית נוספת של הפרויקט' },
+  { src: sinkholeVideo, label: 'SINKHOLE / 03', alt: 'הדמיית הבולען והמרחב העירוני' },
 ];
 
-const navItems = [['הספר', '#book'], ['הפרויקט', '#project'], ['חדר 207', '#room-207'], ['אודות ניצן', '#about'], ['רכישה', '#purchase']];
-const externalLinks = [['Portfolio', 'https://nitzanshelef.myportfolio.com'], ['Instagram', 'https://www.instagram.com/nitzan_shelef/'], ['צרו קשר', 'mailto:nitzan2112@gmail.com']];
+const navItems = [
+  ['הספר', '#book'], ['הפרויקט', '#project'], ['וידאו', '#films'],
+  ['הספר מבפנים', '#book-gallery'], ['אודות ניצן', '#about'], ['רכישה', '#purchase'],
+];
+
+const externalLinks = [
+  ['Portfolio', 'https://nitzanshelef.myportfolio.com'],
+  ['Instagram', 'https://www.instagram.com/nitzan_shelef/'],
+  ['contact', 'mailto:nitzan2112@gmail.com'],
+];
 
 function useReveal() {
   useEffect(() => {
@@ -44,7 +52,7 @@ function PurchaseOptions({ compact = false }) {
   return (
     <div className={`purchase-options${compact ? ' purchase-options--compact' : ''}`}>
       {purchaseOptions.map((option) => (
-        <a className={`purchase-option${option.featured ? ' purchase-option--featured' : ''}`} href={option.href} target="_blank" rel="noreferrer" key={option.href}>
+        <a className="purchase-option" href={option.href} target="_blank" rel="noreferrer" key={option.href}>
           <span className="purchase-option__title">{option.title}</span>
           <span className="purchase-option__price">{option.price}</span>
           <span className="purchase-option__note">{option.note}</span>
@@ -56,11 +64,13 @@ function PurchaseOptions({ compact = false }) {
 }
 
 export default function App() {
-  const [activeSlide, setActiveSlide] = useState(0);
+  const [activeVideo, setActiveVideo] = useState(0);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [shopOpen, setShopOpen] = useState(false);
   const drawerCloseRef = useRef(null);
   const shopCloseRef = useRef(null);
+  const videoRefs = useRef([]);
+  const touchStart = useRef(null);
   useReveal();
   const overlayOpen = drawerOpen || shopOpen;
 
@@ -81,25 +91,45 @@ export default function App() {
     };
   }, [overlayOpen]);
 
+  useEffect(() => {
+    if (!shopOpen) return undefined;
+    const closeOnWheel = () => setShopOpen(false);
+    window.addEventListener('wheel', closeOnWheel, { passive: true, once: true });
+    return () => window.removeEventListener('wheel', closeOnWheel);
+  }, [shopOpen]);
+
   useEffect(() => { if (drawerOpen) drawerCloseRef.current?.focus(); }, [drawerOpen]);
   useEffect(() => { if (shopOpen) shopCloseRef.current?.focus(); }, [shopOpen]);
 
-  const changeSlide = (direction) => setActiveSlide((current) => (current + direction + slides.length) % slides.length);
+  useEffect(() => {
+    videoRefs.current.forEach((video, index) => {
+      if (!video) return;
+      if (index === activeVideo) video.play().catch(() => {});
+      else video.pause();
+    });
+  }, [activeVideo]);
+
+  const changeVideo = (direction) => setActiveVideo((current) => (current + direction + videos.length) % videos.length);
   const closeOverlays = () => { setDrawerOpen(false); setShopOpen(false); };
+  const handleTouchEnd = (event) => {
+    if (touchStart.current === null) return;
+    const distance = event.changedTouches[0].clientX - touchStart.current;
+    if (Math.abs(distance) > 45) changeVideo(distance > 0 ? -1 : 1);
+    touchStart.current = null;
+  };
 
   return (
     <div className="site-shell" dir="rtl" lang="he">
       <header className="site-header">
-        <a className="wordmark" href="#book" aria-label="ניצן שלף לוי — לראש העמוד"><span>ניצן שלף לוי</span><small>Nitzan Shelef Levy</small></a>
-        <img className="header-logo" src={logoIcon} alt="" aria-hidden="true" />
+        <a className="wordmark" href="#book" aria-label="ניצן שלף לוי — לראש העמוד">ניצן שלף לוי</a>
       </header>
 
       <button className="edge-control edge-control--contents" onClick={() => { setShopOpen(false); setDrawerOpen(true); }} aria-expanded={drawerOpen}>
         <span className="menu-glyph" aria-hidden="true"><i /><i /><i /></span><span>תוכן</span>
       </button>
-      <button className="edge-control edge-control--shop" onClick={() => { setDrawerOpen(false); setShopOpen(true); }} aria-expanded={shopOpen}><span>SHOP</span><span aria-hidden="true">←</span></button>
+      <button className="edge-control edge-control--shop" onClick={() => { setDrawerOpen(false); setShopOpen(true); }} aria-expanded={shopOpen}><span>SHOP</span><span aria-hidden="true">→</span></button>
 
-      <button className={`page-backdrop${overlayOpen ? ' is-open' : ''}`} aria-label="סגירת חלון" tabIndex={overlayOpen ? 0 : -1} onClick={closeOverlays} />
+      <button className={`page-backdrop${overlayOpen ? ' is-open' : ''}${drawerOpen ? ' is-blurred' : ''}`} aria-label="סגירת חלון" tabIndex={overlayOpen ? 0 : -1} onClick={closeOverlays} />
 
       <aside className={`contents-drawer${drawerOpen ? ' is-open' : ''}`} aria-hidden={!drawerOpen} aria-label="תוכן וקישורים">
         <button ref={drawerCloseRef} className="overlay-close" onClick={() => setDrawerOpen(false)} aria-label="סגירת תפריט">×</button>
@@ -120,47 +150,52 @@ export default function App() {
 
       <main>
         <section className="hero" id="book" aria-label="הקריסה הבלתי נראית">
-          <div className="hero-slides" aria-live="polite">
-            {slides.map((slide, index) => (
-              <figure className={`hero-slide ${slide.className}${index === activeSlide ? ' is-active' : ''}`} key={slide.src} aria-hidden={index !== activeSlide}>
-                <img src={slide.src} alt={index === activeSlide ? slide.alt : ''} loading={index === 0 ? 'eager' : 'lazy'} />
-                <figcaption>{slide.label}</figcaption>
-              </figure>
-            ))}
-          </div>
-          <div className="hero-copy"><p>ספר אדריכלות ופרוזה פואטית</p><h1>הקריסה<br />הבלתי נראית</h1><span>ניצן שלף לוי</span></div>
-          <div className="hero-controls"><button onClick={() => changeSlide(-1)} aria-label="התמונה הקודמת">→</button><span>{String(activeSlide + 1).padStart(2, '0')} / {String(slides.length).padStart(2, '0')}</span><button onClick={() => changeSlide(1)} aria-label="התמונה הבאה">←</button></div>
-          <a className="scroll-cue" href="#project">לגלות את הספר <span aria-hidden="true">↓</span></a>
+          <img className="hero-image" src={coverImage} alt="הספר הקריסה הבלתי נראית מוצג בכריכה סגורה ובמפתח פנימי" fetchPriority="high" />
         </section>
 
         <section className="project-intro section-frame" id="project">
           <div className="section-index" data-reveal><span>01</span><p>הבולען כמטאפורה<br />להתמוטטות חברתית ופוליטית</p></div>
           <div className="project-copy" data-reveal>
-            <p className="eyebrow">הפרויקט</p><h2>זה לא קרה ביום אחד.</h2>
-            <p className="lead">הקריסה החלה הרבה לפני שהאדמה העירונית נפערה באמת. הערכים, האמון והערבות ההדדית כבר החלו לקרוס פנימה, עד לרגע השבר שחתך את המרחב העירוני והחברתי.</p>
-            <p>דרך חקירה של מרחבים עירוניים בתל אביב, הספר שואל כיצד אפשר לתרגם תהליכים של שחיקה חברתית לשפה אדריכלית. במקום למחוק את מה שנשבר, הוא מציע אדריכלות שזוכרת — מרחב שמכיר בפצע ומאפשר לחיים להמשיך לצידו.</p>
+            <h2>העיצוב אינו מסתיר את הסדק, הוא מעיד עליו.</h2>
+            <div className="back-cover-copy">
+              <p>זה לא קרה ביום אחד. הקריסה החלה הרבה לפני שהאדמה העירונית נפערה באמת. הערכים, האמון, הערבות ההדדית — כולם כבר החלו לקרוס פנימה בסתר, עד לרגע השבר החד שחתך את המרחב העירוני והחברתי.</p>
+              <p>האדריכלית ניצן שלף לוי מביאה בפנינו ספר ביכורים נועז, מפתיע ורדיקלי, המשלב פרוזה פואטית וגרפיקה אדריכלית פנטסטית. יחד, הן מאפשרות לנו להביט פנימה, במבט חודר, אל תוך ה״בולען״ הישראלי. זה אינו רק אסון גיאולוגי דמיוני, אלא עדשה חריפה אל תוך התמוטטות חברתית ופוליטית.</p>
+              <p>שלף לוי מניחה בפנינו שפה חדשה: אדריכלות החיה לצד הפצע. ובוראת עבורנו קהילתיות אחרת ומערכת תנועה אנושית — המאלצת אותנו להיפגש, לראות ולהרגיש.</p>
+              <p>במסע ארכיטקטוני־נפשי מרתק היא מבקשת מאיתנו שלא לעצום עיניים, ולהביט היישר אל תוך הסדק, על מנת לגלות בו כיוונים ואפשרויות חדשות — לחברה שרוצה, למרות הכל, לבנות את עצמה מתוך ההרס.</p>
+            </div>
           </div>
-          <figure className="project-diagram" data-reveal><img src={collapseDiagram} alt="דיאגרמה אנכית של העיר והשבר מתוך הקריסה הבלתי נראית" loading="lazy" /></figure>
+          <figure className="project-image" data-reveal><img src={projectImage} alt="קולאז׳ אדריכלי אנכי מתוך הקריסה הבלתי נראית" loading="lazy" /></figure>
         </section>
 
-        <section className="quote-section" aria-label="ציטוט מתוך הספר"><p data-reveal>״בולען מתפתח לאט, בסתר,<br />עד לרגע הקריסה.״</p></section>
+        <section className="quote-section" aria-label="ציטוט מתוך הספר"><p data-reveal>בולען מתפתח לאט, בסתר, עד לרגע הקריסה.</p></section>
 
-        <section className="visual-study section-frame" aria-labelledby="visual-title">
-          <div className="section-heading" data-reveal><span>02</span><div><p className="eyebrow">מתוך המחקר</p><h2 id="visual-title">לחיות לצד השבר</h2></div></div>
-          <div className="study-grid">
-            <figure className="study-image" data-reveal><img src={collapsePlan} alt="מפת תל אביב ובה שבר אדריכלי כהה" loading="lazy" /><figcaption>העיר זוכרת את הכישלונות ואת העבר, ומזמינה חיים לצידם.</figcaption></figure>
-            <figure className="study-image study-image--structure" data-reveal><img src={collapseStructure} alt="מערכת אדריכלית לבנה הצומחת מעל המרקם העירוני" loading="lazy" /><figcaption>מערכת תנועה חדשה מחברת בין מבנים, אנשים וזיכרונות.</figcaption></figure>
-            <div className="image-placeholder" data-reveal aria-label="מקום שמור לצילום עתידי"><span>IMAGE / 03</span><p>מקום שמור לצילום נוסף</p></div>
+        <section className="video-section section-frame" id="films" aria-labelledby="video-title">
+          <div className="section-heading" data-reveal><span>02</span><div><p className="eyebrow">תנועה בתוך השבר</p><h2 id="video-title">העיר בתנועה</h2></div></div>
+          <div className="video-slider" data-reveal onTouchStart={(event) => { touchStart.current = event.touches[0].clientX; }} onTouchEnd={handleTouchEnd}>
+            <div className="video-stage">
+              {videos.map((video, index) => (
+                <figure className={`video-slide${index === activeVideo ? ' is-active' : ''}`} aria-hidden={index !== activeVideo} key={video.src}>
+                  <video ref={(node) => { videoRefs.current[index] = node; }} src={video.src} aria-label={video.alt} muted loop playsInline preload={index === 0 ? 'auto' : 'metadata'} />
+                  <figcaption>{video.label}</figcaption>
+                </figure>
+              ))}
+            </div>
+            <div className="video-controls">
+              <button onClick={() => changeVideo(-1)} aria-label="הסרטון הקודם">→</button>
+              <div>{videos.map((video, index) => <button className={index === activeVideo ? 'is-active' : ''} onClick={() => setActiveVideo(index)} aria-label={`הצגת סרטון ${index + 1}`} key={video.src} />)}</div>
+              <button onClick={() => changeVideo(1)} aria-label="הסרטון הבא">←</button>
+            </div>
           </div>
         </section>
 
-        <section className="room-section" id="room-207">
-          <div className="room-heading section-frame" data-reveal><span className="room-number">207</span><div><p className="eyebrow">תערוכה — אוניברסיטת חיפה</p><h2>חדר 207</h2><p>המשך פיזי לפרויקט הגמר, שהוצג בתערוכת העבודות הנבחרות בבית הספר לעיצוב. במרכז החלל ניצב מודל בגודל שניים על מטר אחד, המחבר שלושה תרחישים: התרגלנו, פעלנו ונטשנו.</p></div></div>
-          <div className="room-gallery"><figure data-reveal><img src={roomWide} alt="מבט רחב על מודל חדר 207" loading="lazy" /></figure><figure data-reveal><img src={roomDetail} alt="פרט מתוך מודל חדר 207 עם גרם מדרגות אדום" loading="lazy" /></figure><figure data-reveal><img src={roomStairs} alt="תקריב של גרם המדרגות במודל חדר 207" loading="lazy" /></figure></div>
+        <section className="book-gallery" id="book-gallery" aria-labelledby="gallery-title">
+          <div className="section-heading section-frame" data-reveal><span>03</span><div><p className="eyebrow">הספר מבפנים</p><h2 id="gallery-title">מבט אל בין הדפים</h2></div></div>
+          <figure data-reveal><img src={openBookOne} alt="הספר הקריסה הבלתי נראית פתוח ומציג עמודים פנימיים" loading="lazy" /></figure>
+          <figure data-reveal><img src={openBookTwo} alt="מבט נוסף על הספר הפתוח והכריכה" loading="lazy" /></figure>
         </section>
 
         <section className="about-section section-frame" id="about">
-          <div className="about-mark" data-reveal><img src={logoIcon} alt="לוגו ניצן שלף לוי" /><span>03 / ABOUT</span></div>
+          <div className="about-mark" data-reveal><img src={logoIcon} alt="לוגו ניצן שלף לוי" /><span>04 / ABOUT</span></div>
           <div className="about-copy" data-reveal>
             <p className="eyebrow">אודות ניצן</p><h2>אדריכלית, אמנית ומעצבת.</h2>
             <p className="lead">ניצן שלף לוי יוצרת מרחבים משמעותיים דרך מחקר, יצירתיות וחדשנות. היא בוגרת תואר B.Arch באדריכלות מאוניברסיטת חיפה בהצטיינות.</p>
