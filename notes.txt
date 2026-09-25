@@ -1,0 +1,49 @@
+in the top section:
+  1. use a single photo ./book-sources/cover.jpeg and remove the text on the right and the logo on top right
+  2. the name "nitzan shelef levy" in the top left remove (and keep the hebrow "ניצן שלף לוי" only and make it x1.5 size)
+the 01 section:
+  1. use ./book-sources/photo_1.jpeg (make sure to not cut it) and change the text to the books back text:
+  העיצוב אינו מסתיר את הסדק, הוא מעיד עליו.
+זה לא קרה ביום אחד. הקריסה החלה הרבה לפני
+שהאדמה העירונית נפערה באמת. הערכים, האמון,
+הערבות ההדדית — כולם כבר החלו לקרוס פנימה
+בסתר, עד לרגע השבר החד שחתך את המרחב העירוני
+והחברתי.
+
+האדריכלית ניצן שלף לוי מביאה בפנינו ספר ביכורים
+נועז, מפתיע ורדיקלי, המשלב פרוזה פואטית וגרפיקה
+אדריכלית פנטסטית. יחד, הן מאפשרות לנו להביט
+פנימה, במבט חודר, אל תוך ה"בולען" הישראלי. זה
+אינו רק אסון גיאולוגי דמיוני, אלא עדשה חריפה אל
+תוך התמוטטות חברתית ופוליטית.
+
+שלף לוי מניחה בפנינו שפה חדשה: אדריכלות החיה לצד
+הפצע. ובוראת עבורנו קהילתיות אחרת ומערכת תנועה
+אנושית — המאלצת אותנו להיפגש, לראות ולהרגיש.
+
+במסע ארכיטקטוני־נפשי מרתק היא מבקשת מאיתנו
+שלא לעצום עיניים, ולהביט היישר אל תוך הסדק, על
+מנת לגלות בו כיוונים ואפשרויות חדשות — לחברה
+שרוצה, למרות הכל, לבנות את עצמה מתוך ההרס
+
+and make each line the same length (justified text/ full justification)
+
+the "בולען מתפתח לאט, בסתר, לרגע הקריסה":
+  1. make that section thinner and the text smaller (and in a single line without '/n')
+
+the 02 section:
+  change it to video section. use ./book-sources/iso.mp4 as the first one and with option to switch sideways to ./book-sources/iso_02.mov and ./book-sources/sinkhole.mov
+
+the section 03:
+  create another section for book images. each with be page wide and the photos will be one under the other. use ./book-sources/open_book*.jpeg
+
+the room 207 section:
+remove this section
+
+
+the side overlays:
+  1. the table of context. move it to the right side and remove the white background. i want it to make the rest of the page 50% blurr and make the text smaller. also change "צור קשר" to "contact"
+  2. the shop bottom, move it to the left and after clicking it make the "בחרו אפשרות רכישה" smaller and the two boxes of purches option more square and both the same color as the 98 option. and a use of the mouse wheel scroll will exit that overlay.
+
+
+make small changes to not lose good progress
