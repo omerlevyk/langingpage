@@ -22,8 +22,9 @@ const videos = [
 ];
 
 const navItems = [
-  ['הספר', '#book'], ['הפרויקט', '#project'], ['וידאו', '#films'],
-  ['הספר מבפנים', '#book-gallery'], ['אודות ניצן', '#about'], ['רכישה', '#purchase'],
+  ['הקריסה הבלתי נראית', '#project'],
+  ['הבלוען', '#films'],
+  ['זה לא קרה ביום אחד', '#book-gallery'], ['אודות', '#about'], ['לרכישה', '#purchase'],
 ];
 
 const externalLinks = [
@@ -124,14 +125,20 @@ export default function App() {
         <a className="wordmark" href="#book" aria-label="ניצן שלף לוי — לראש העמוד">ניצן שלף לוי</a>
       </header>
 
-      <button className="edge-control edge-control--contents" onClick={() => { setShopOpen(false); setDrawerOpen(true); }} aria-expanded={drawerOpen}>
+      <button
+        className="edge-control edge-control--contents"
+        onMouseEnter={() => { setShopOpen(false); setDrawerOpen(true); }}
+        onFocus={() => { setShopOpen(false); setDrawerOpen(true); }}
+        onClick={() => { setShopOpen(false); setDrawerOpen(true); }}
+        aria-expanded={drawerOpen}
+      >
         <span className="menu-glyph" aria-hidden="true"><i /><i /><i /></span><span>תוכן</span>
       </button>
-      <button className="edge-control edge-control--shop" onClick={() => { setDrawerOpen(false); setShopOpen(true); }} aria-expanded={shopOpen}><span>SHOP</span><span aria-hidden="true">→</span></button>
+      <button className="edge-control edge-control--shop" onClick={() => { setDrawerOpen(false); setShopOpen(true); }} aria-expanded={shopOpen}><span>לרכישה</span><span aria-hidden="true">→</span></button>
 
       <button className={`page-backdrop${overlayOpen ? ' is-open' : ''}${drawerOpen ? ' is-blurred' : ''}`} aria-label="סגירת חלון" tabIndex={overlayOpen ? 0 : -1} onClick={closeOverlays} />
 
-      <aside className={`contents-drawer${drawerOpen ? ' is-open' : ''}`} aria-hidden={!drawerOpen} aria-label="תוכן וקישורים">
+      <aside className={`contents-drawer${drawerOpen ? ' is-open' : ''}`} aria-hidden={!drawerOpen} aria-label="תוכן וקישורים" onMouseLeave={() => setDrawerOpen(false)}>
         <button ref={drawerCloseRef} className="overlay-close" onClick={() => setDrawerOpen(false)} aria-label="סגירת תפריט">×</button>
         <p className="drawer-kicker">תוכן</p>
         <nav className="drawer-nav" aria-label="ניווט בעמוד">
@@ -154,9 +161,8 @@ export default function App() {
         </section>
 
         <section className="project-intro section-frame" id="project">
-          <div className="section-index" data-reveal><span>01</span><p>הבולען כמטאפורה<br />להתמוטטות חברתית ופוליטית</p></div>
+          <div className="section-index" data-reveal><span>01</span><p>הקריסה הבלתי נראית</p></div>
           <div className="project-copy" data-reveal>
-            <h2>העיצוב אינו מסתיר את הסדק, הוא מעיד עליו.</h2>
             <div className="back-cover-copy">
               <p>זה לא קרה ביום אחד. הקריסה החלה הרבה לפני שהאדמה העירונית נפערה באמת. הערכים, האמון, הערבות ההדדית — כולם כבר החלו לקרוס פנימה בסתר, עד לרגע השבר החד שחתך את המרחב העירוני והחברתי.</p>
               <p>האדריכלית ניצן שלף לוי מביאה בפנינו ספר ביכורים נועז, מפתיע ורדיקלי, המשלב פרוזה פואטית וגרפיקה אדריכלית פנטסטית. יחד, הן מאפשרות לנו להביט פנימה, במבט חודר, אל תוך ה״בולען״ הישראלי. זה אינו רק אסון גיאולוגי דמיוני, אלא עדשה חריפה אל תוך התמוטטות חברתית ופוליטית.</p>
@@ -169,28 +175,29 @@ export default function App() {
 
         <section className="quote-section" aria-label="ציטוט מתוך הספר"><p data-reveal>בולען מתפתח לאט, בסתר, עד לרגע הקריסה.</p></section>
 
-        <section className="video-section section-frame" id="films" aria-labelledby="video-title">
-          <div className="section-heading" data-reveal><span>02</span><div><p className="eyebrow">תנועה בתוך השבר</p><h2 id="video-title">העיר בתנועה</h2></div></div>
+        <section className="video-section" id="films" aria-label="הבולען כמטאפורה להתמוטטות חברתית ופוליטית">
           <div className="video-slider" data-reveal onTouchStart={(event) => { touchStart.current = event.touches[0].clientX; }} onTouchEnd={handleTouchEnd}>
             <div className="video-stage">
+              <div className="media-label media-label--video"><span>02</span><p>הבולען כמטאפורה<br />להתמוטטות חברתית ופוליטית</p></div>
               {videos.map((video, index) => (
                 <figure className={`video-slide${index === activeVideo ? ' is-active' : ''}`} aria-hidden={index !== activeVideo} key={video.src}>
                   <video ref={(node) => { videoRefs.current[index] = node; }} src={video.src} aria-label={video.alt} muted loop playsInline preload={index === 0 ? 'auto' : 'metadata'} />
-                  <figcaption>{video.label}</figcaption>
                 </figure>
               ))}
-            </div>
-            <div className="video-controls">
-              <button onClick={() => changeVideo(-1)} aria-label="הסרטון הקודם">→</button>
-              <div>{videos.map((video, index) => <button className={index === activeVideo ? 'is-active' : ''} onClick={() => setActiveVideo(index)} aria-label={`הצגת סרטון ${index + 1}`} key={video.src} />)}</div>
-              <button onClick={() => changeVideo(1)} aria-label="הסרטון הבא">←</button>
+              <div className="video-controls">
+                <button onClick={() => changeVideo(-1)} aria-label="הסרטון הקודם">→</button>
+                <div>{videos.map((video, index) => <button className={index === activeVideo ? 'is-active' : ''} onClick={() => setActiveVideo(index)} aria-label={`הצגת סרטון ${index + 1}`} key={video.src} />)}</div>
+                <button onClick={() => changeVideo(1)} aria-label="הסרטון הבא">←</button>
+              </div>
             </div>
           </div>
         </section>
 
-        <section className="book-gallery" id="book-gallery" aria-labelledby="gallery-title">
-          <div className="section-heading section-frame" data-reveal><span>03</span><div><p className="eyebrow">הספר מבפנים</p><h2 id="gallery-title">מבט אל בין הדפים</h2></div></div>
-          <figure data-reveal><img src={openBookOne} alt="הספר הקריסה הבלתי נראית פתוח ומציג עמודים פנימיים" loading="lazy" /></figure>
+        <section className="book-gallery" id="book-gallery" aria-label="זה לא קרה ביום אחד">
+          <figure data-reveal>
+            <img src={openBookOne} alt="הספר הקריסה הבלתי נראית פתוח ומציג עמודים פנימיים" loading="lazy" />
+            <div className="media-label media-label--book"><span>03</span><p>זה לא קרה ביום אחד</p></div>
+          </figure>
           <figure data-reveal><img src={openBookTwo} alt="מבט נוסף על הספר הפתוח והכריכה" loading="lazy" /></figure>
         </section>
 
