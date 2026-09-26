@@ -89,12 +89,13 @@ img,video { user-select:none; -webkit-user-select:none; -webkit-user-drag:none; 
 
 .about-section { min-height:95vh; display:grid; grid-template-columns:.7fr 1.3fr; gap:clamp(3rem,10vw,11rem); align-items:center; padding-block:clamp(7rem,12vw,12rem); }
 .about-mark { position:relative; min-height:0; overflow:visible; background:var(--pink-pale); }
+.about-portrait-frame { width:100%; }
 .about-mark .about-portrait { display:block; width:100%; height:auto; }
 .about-label { position:absolute; z-index:1; top:-6.75rem; right:0; width:max-content; }
 .about-label p { margin:.45rem 0 0; font-size:.8rem; line-height:1; }
 .about-copy h3 { margin:0; font-size:clamp(1.68rem,2.25vw,2.175rem); font-weight:300; line-height:1.05; letter-spacing:-.03em; }
 .about-copy .lead { margin-top:2rem; font-size:clamp(1.12rem,1.5vw,1.45rem); line-height:1.75; }
-.about-copy>p:not(.eyebrow):not(.lead) { color:var(--muted); line-height:1.9; }
+.about-intro>p:not(.eyebrow):not(.lead) { color:var(--muted); line-height:1.9; }
 .award-list { margin:2.5rem 0; border-top:1px solid var(--line); }
 .award-list p { display:grid; grid-template-columns:4rem 1fr; gap:1rem; margin:0; padding:1rem 0; border-bottom:1px solid var(--line); color:var(--muted); font-size:.84rem; }
 .award-list span { color:var(--ink); }
@@ -141,7 +142,10 @@ img,video { user-select:none; -webkit-user-select:none; -webkit-user-drag:none; 
 @media (max-width:560px) {
   :root { --space:1.25rem; }
   .site-header { padding-top:1.3rem; }
-  .wordmark { font-size:1.25rem; }
+  .wordmark { font-size:.875rem; }
+  .hero { aspect-ratio:4/5; overflow:hidden; }
+  .hero-image { width:100%; height:100%; object-fit:cover; object-position:center; }
+  .video-section { border-bottom:4.5rem solid var(--bright); }
   .edge-control span:not(.menu-glyph) { font-size:.65rem; }
   .edge-control--contents { padding-inline:.8rem; }
   .edge-control--shop { min-width:6rem; }
@@ -150,12 +154,31 @@ img,video { user-select:none; -webkit-user-select:none; -webkit-user-drag:none; 
   .shop-panel { max-height:94svh; overflow-y:auto; }
   .purchase-options--compact { grid-template-columns:repeat(2,minmax(0,1fr)); }
   .purchase-options--compact .purchase-option { aspect-ratio:auto; min-height:8.5rem; }
+  .project-intro>.section-index { margin-top:-1.5rem; }
+  .back-cover-copy { width:90%; margin-inline:auto; }
+  .project-copy { position:relative; z-index:1; grid-column:1; grid-row:2; }
+  .project-image { z-index:0; grid-column:1; grid-row:2; align-self:end; aspect-ratio:3/1; margin-top:0; overflow:hidden; opacity:.5; }
+  .project-image[data-reveal].is-visible { opacity:.5; }
+  .project-image img { object-position:top; }
   .project-intro,.about-section,.purchase-section { padding-block:6rem; }
+  .project-intro { padding-bottom:4.5rem; }
+  .purchase-section { min-height:auto; padding-block:4rem; }
+  .about-section { grid-template-columns:minmax(0,3fr) minmax(0,7fr); column-gap:1rem; row-gap:2.5rem; align-items:start; }
+  .about-mark { grid-column:1; grid-row:2/4; width:auto; min-height:0; height:auto; align-self:start; justify-self:stretch; background:transparent; }
+  .about-portrait-frame { position:static; overflow:visible; }
+  .about-portrait-frame picture { display:block; width:100%; height:auto; }
+  .about-mark .about-portrait { width:100%; height:auto; object-fit:contain; object-position:center; filter:none; }
+  .about-label { top:-4rem; right:0; }
+  .about-copy,.about-intro { display:contents; }
+  .about-intro h3 { position:relative; top:.75rem; right:-2rem; grid-column:2; grid-row:1; justify-self:center; text-align:center; }
+  .about-intro .lead { grid-column:2; grid-row:2; align-self:start; margin:0; }
+  .about-intro>p:not(.lead) { grid-column:2; grid-row:3; margin:-1.5rem 0 0; }
+  .about-details { grid-column:1/-1; grid-row:4; }
   .quote-section { min-height:9rem; padding-inline:.6rem; }
   .quote-section p { font-size:clamp(.67rem,3.1vw,1rem); }
   .section-heading { margin-bottom:2.5rem; }
   .site-footer,.site-footer>div:first-child { align-items:flex-start; flex-direction:column; }
-  .site-footer { padding-bottom:6rem; }
+  .site-footer { padding-bottom:3rem; }
 }
 
 @media (prefers-reduced-motion:reduce) {

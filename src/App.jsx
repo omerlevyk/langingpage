@@ -9,6 +9,7 @@ import openBookTwo from './assets/refinements/open-book-2.webp';
 import isoVideo from './assets/refinements/iso.mp4';
 import isoVideoTwo from './assets/refinements/iso-02.mp4';
 import sinkholeVideo from './assets/refinements/sinkhole.mp4';
+import nitzanMobilePortrait from './assets/refinements/nitzan_mobile.jpg';
 import nitzanPortrait from '../book-sources/nitzan.jpg';
 
 const links = {
@@ -218,15 +219,24 @@ export default function App() {
 
         <section className="about-section section-frame" id="about">
           <div className="about-mark" data-reveal>
-            <img className="about-portrait" src={nitzanPortrait} alt="ניצן שלף לוי" loading="lazy" />
+            <div className="about-portrait-frame">
+              <picture>
+                <source media="(max-width: 560px)" srcSet={nitzanMobilePortrait} />
+                <img className="about-portrait" src={nitzanPortrait} alt="ניצן שלף לוי" loading="lazy" />
+              </picture>
+            </div>
             <div className="about-label section-index"><span className="section-number">04</span></div>
           </div>
           <div className="about-copy" data-reveal>
-            <h3>אדריכלית, אמנית ומעצבת.</h3>
-            <p className="lead">ניצן שלף לוי בוגרת תואר B.Arch באדריכלות מאוניברסיטת חיפה בהצטיינות.</p>
-            <p>עבודתה נעה בין תכנון עירוני, עיצוב מפורט ומחקר אמנותי.<br />  שלף לוי מחפשת את נקודת המפגש שבין יצירתיות להיגיון — המקום שבו אדריכלות הופכת לכלי לביטוי, לשאלה ולפתרון.</p>
-            <div className="award-list"><p><span>2025</span> חמישיית הגמר, אות האדריכלות הישראלית — ״אדריכלות המחר״</p><p><span>2024</span> מקום שלישי, אות האדריכלות הישראלית — ״אדריכלות המחר״</p></div>
-            <a className="text-link" href={links.portfolio} target="_blank" rel="noreferrer">לפורטפוליו המלא</a>
+            <div className="about-intro">
+              <h3>אדריכלית, אמנית ומעצבת.</h3>
+              <p className="lead">ניצן שלף לוי בוגרת תואר B.Arch באדריכלות מאוניברסיטת חיפה בהצטיינות.</p>
+              <p>עבודתה נעה בין תכנון עירוני, עיצוב מפורט ומחקר אמנותי.<br />  שלף לוי מחפשת את נקודת המפגש שבין יצירתיות להיגיון — המקום שבו אדריכלות הופכת לכלי לביטוי, לשאלה ולפתרון.</p>
+            </div>
+            <div className="about-details">
+              <div className="award-list"><p><span>2025</span> חמישיית הגמר, אות האדריכלות הישראלית — ״אדריכלות המחר״</p><p><span>2024</span> מקום שלישי, אות האדריכלות הישראלית — ״אדריכלות המחר״</p></div>
+              <a className="text-link" href={links.portfolio} target="_blank" rel="noreferrer">לפורטפוליו המלא</a>
+            </div>
           </div>
         </section>
 
