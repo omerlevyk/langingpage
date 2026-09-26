@@ -50,7 +50,8 @@ img,video { max-width:100%; }
 .section-frame { padding-inline:var(--space); }
 .project-intro { --project-block-space:clamp(6rem,10vw,10rem); display:grid; grid-template-columns:.42fr 1.15fr .58fr; gap:clamp(2rem,5vw,6rem); align-items:stretch; padding-block:var(--project-block-space); background:var(--bright); }
 .section-index { padding-top:1rem; }
-.section-index span,.section-heading>span { display:block; margin-bottom:1.4rem; color:var(--pink); font-family:'Playfair Display',serif; font-size:3.5rem; }
+.section-index span,.section-heading>span { display:block; margin-bottom:1.4rem; color:var(--pink); }
+.section-number { display:block; font-family:'Playfair Display',serif; font-size:clamp(2.2rem,5vw,5rem); font-style:normal; font-weight:400; line-height:1; letter-spacing:normal; }
 .section-index p { color:var(--muted); font-size:.8rem; line-height:1.8; }
 .eyebrow { margin:0 0 1rem; color:var(--muted); font-size:.72rem; letter-spacing:.14em; }
 .project-copy h2,.section-heading h2,.about-copy h2,.purchase-heading h2 { margin:0; font-size:clamp(2.3rem,4.6vw,5.2rem); font-weight:300; line-height:1.05; letter-spacing:-.03em; }
@@ -71,7 +72,6 @@ img,video { max-width:100%; }
 .video-slide.is-active { opacity:1; visibility:visible; transition-delay:0s; }
 .video-slide video { display:block; width:100%; height:100%; object-fit:contain; }
 .media-label { position:absolute; z-index:4; color:#fff; text-shadow:0 1px 10px rgba(0,0,0,.45); pointer-events:none; }
-.media-label span { display:block; font-family:'Playfair Display',serif; font-size:clamp(2.2rem,5vw,5rem); line-height:1; }
 .media-label p { margin:.7rem 0 0; font-size:clamp(.68rem,1.1vw,.9rem); line-height:1.55; }
 .media-label--video { top:var(--space); right:var(--space); }
 .video-controls { position:absolute; z-index:4; left:50%; bottom:clamp(.7rem,2vw,1.5rem); display:flex; align-items:center; justify-content:center; gap:1.5rem; margin:0; direction:ltr; transform:translateX(-50%); }
@@ -86,9 +86,10 @@ img,video { max-width:100%; }
 .media-label--book { top:var(--space); right:var(--space); color:var(--ink); text-shadow:0 1px 12px rgba(255,255,255,.8); }
 
 .about-section { min-height:95vh; display:grid; grid-template-columns:.7fr 1.3fr; gap:clamp(3rem,10vw,11rem); align-items:center; padding-block:clamp(7rem,12vw,12rem); }
-.about-mark { min-height:30rem; display:flex; flex-direction:column; justify-content:space-between; padding:2rem; background:var(--pink-pale); }
-.about-mark img { width:7rem; mix-blend-mode:multiply; }
-.about-mark span { font-size:.67rem; letter-spacing:.18em; }
+.about-mark { position:relative; min-height:0; overflow:visible; background:var(--pink-pale); }
+.about-mark .about-portrait { display:block; width:100%; height:auto; }
+.about-label { position:absolute; z-index:1; top:-6.75rem; right:0; width:max-content; }
+.about-label p { margin:.45rem 0 0; font-size:.8rem; line-height:1; }
 .about-copy .lead { margin-top:2rem; font-size:clamp(1.12rem,1.5vw,1.45rem); line-height:1.75; }
 .about-copy>p:not(.eyebrow):not(.lead) { color:var(--muted); line-height:1.9; }
 .award-list { margin:2.5rem 0; border-top:1px solid var(--line); }

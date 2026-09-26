@@ -9,10 +9,19 @@ import openBookTwo from './assets/refinements/open-book-2.webp';
 import isoVideo from './assets/refinements/iso.mp4';
 import isoVideoTwo from './assets/refinements/iso-02.mp4';
 import sinkholeVideo from './assets/refinements/sinkhole.mp4';
+import nitzanPortrait from '../book-sources/nitzan.jpg';
+
+const links = {
+  portfolio: 'https://nitzanshelef.myportfolio.com',
+  instagram: 'https://www.instagram.com/nitzan_shelef/',
+  email: 'mailto:nstudio.nsl@gmail.com',
+  pickupPurchase: 'https://mrng.to/NjxWe42Lv1',
+  deliveryPurchase: 'https://mrng.to/Y0cbfqulsZ',
+};
 
 const purchaseOptions = [
-  { title: 'לרכישת הספר', price: '98 ₪', note: 'רכישה ואיסוף בתיאום מראש', href: 'https://mrng.to/NjxWe42Lv1' },
-  { title: 'לרכישת הספר + משלוח', price: '133 ₪', note: 'הספר יישלח לכתובת שתוזן בעת הרכישה', href: 'https://mrng.to/Y0cbfqulsZ' },
+  { title: 'לרכישת הספר', price: '98 ₪', note: 'רכישה ואיסוף בתיאום מראש', href: links.pickupPurchase },
+  { title: 'לרכישת הספר + משלוח', price: '133 ₪', note: 'הספר יישלח לכתובת שתוזן בעת הרכישה', href: links.deliveryPurchase },
 ];
 
 const videos = [
@@ -30,9 +39,9 @@ const navItems = [
 ];
 
 const externalLinks = [
-  ['Portfolio', 'https://nitzanshelef.myportfolio.com'],
-  ['Instagram', 'https://www.instagram.com/nitzan_shelef/'],
-  ['contact', 'mailto:nitzan2112@gmail.com'],
+  ['Portfolio', links.portfolio],
+  ['Instagram', links.instagram],
+  ['contact', links.email],
 ];
 
 function useReveal() {
@@ -132,8 +141,9 @@ export default function App() {
         onFocus={() => { setShopOpen(false); setDrawerOpen(true); }}
         onClick={() => { setShopOpen(false); setDrawerOpen(true); }}
         aria-expanded={drawerOpen}
+        aria-label="תוכן"
       >
-        <span className="menu-glyph" aria-hidden="true"><i /><i /><i /></span><span>תוכן</span>
+        <span className="menu-glyph" aria-hidden="true"><i /><i /><i /></span>
       </button>
       <button className="edge-control edge-control--shop" onClick={() => { setDrawerOpen(false); setShopOpen(true); }} aria-expanded={shopOpen}><span>לרכישה</span><span aria-hidden="true">→</span></button>
 
@@ -162,7 +172,7 @@ export default function App() {
         </section>
 
         <section className="project-intro section-frame" id="project">
-          <div className="section-index" data-reveal><span>01</span><p>הקריסה הבלתי נראית</p></div>
+          <div className="section-index" data-reveal><span className="section-number">01</span><p>הקריסה הבלתי נראית</p></div>
           <div className="project-copy" data-reveal>
             <div className="back-cover-copy">
               <p>זה לא קרה ביום אחד. הקריסה החלה הרבה לפני שהאדמה העירונית נפערה באמת. הערכים, האמון, הערבות ההדדית — כולם כבר החלו לקרוס פנימה בסתר, עד לרגע השבר החד שחתך את המרחב העירוני והחברתי.</p>
@@ -177,7 +187,7 @@ export default function App() {
         <section className="video-section" id="films" aria-label="הבולען כמטאפורה להתמוטטות חברתית ופוליטית">
           <div className="video-slider" data-reveal onTouchStart={(event) => { touchStart.current = event.touches[0].clientX; }} onTouchEnd={handleTouchEnd}>
             <div className="video-stage">
-              <div className="media-label media-label--video"><span>02</span><p>הבולען כמטאפורה<br />להתמוטטות חברתית ופוליטית</p></div>
+              <div className="media-label media-label--video"><span className="section-number">02</span><p>הבולען כמטאפורה<br />להתמוטטות חברתית ופוליטית</p></div>
               {videos.map((video, index) => (
                 <figure className={`video-slide${index === activeVideo ? ' is-active' : ''}`} aria-hidden={index !== activeVideo} key={video.src}>
                   <video ref={(node) => { videoRefs.current[index] = node; }} src={video.src} aria-label={video.alt} muted loop playsInline preload={index === 0 ? 'auto' : 'metadata'} />
@@ -195,26 +205,29 @@ export default function App() {
         <section className="book-gallery" id="book-gallery" aria-label="זה לא קרה ביום אחד">
           <figure data-reveal>
             <img src={openBookOne} alt="הספר הקריסה הבלתי נראית פתוח ומציג עמודים פנימיים" loading="lazy" />
-            <div className="media-label media-label--book"><span>03</span><p>זה לא קרה ביום אחד</p></div>
+            <div className="media-label media-label--book"><span className="section-number">03</span><p>זה לא קרה ביום אחד</p></div>
           </figure>
           <figure data-reveal><img src={openBookTwo} alt="מבט נוסף על הספר הפתוח והכריכה" loading="lazy" /></figure>
         </section>
 
         <section className="about-section section-frame" id="about">
-          <div className="about-mark" data-reveal><img src={logoIcon} alt="לוגו ניצן שלף לוי" /><span>04 / ABOUT</span></div>
+          <div className="about-mark" data-reveal>
+            <img className="about-portrait" src={nitzanPortrait} alt="ניצן שלף לוי" loading="lazy" />
+            <div className="about-label section-index"><span className="section-number">04</span></div>
+          </div>
           <div className="about-copy" data-reveal>
-            <p className="eyebrow">אודות ניצן</p><h2>אדריכלית, אמנית ומעצבת.</h2>
+            <h2>אדריכלית, אמנית ומעצבת.</h2>
             <p className="lead">ניצן שלף לוי יוצרת מרחבים משמעותיים דרך מחקר, יצירתיות וחדשנות. היא בוגרת תואר B.Arch באדריכלות מאוניברסיטת חיפה בהצטיינות.</p>
             <p>עבודתה נעה בין תכנון עירוני, עיצוב מפורט ומחקר אמנותי. היא מחפשת את נקודת המפגש שבין יצירתיות להיגיון — המקום שבו אדריכלות הופכת לכלי לביטוי, לשאלה ולפתרון.</p>
             <div className="award-list"><p><span>2025</span> חמישיית הגמר, אות האדריכלות הישראלית — ״אדריכלות המחר״</p><p><span>2024</span> מקום שלישי, אות האדריכלות הישראלית — ״אדריכלות המחר״</p></div>
-            <a className="text-link" href="https://nitzanshelef.myportfolio.com" target="_blank" rel="noreferrer">לפורטפוליו המלא</a>
+            <a className="text-link" href={links.portfolio} target="_blank" rel="noreferrer">לפורטפוליו המלא</a>
           </div>
         </section>
 
         <section className="purchase-section" id="purchase"><div className="purchase-heading" data-reveal><p>ספר ביכורים מאת ניצן שלף לוי</p><h2>הקריסה<br />הבלתי נראית</h2></div><div data-reveal><PurchaseOptions /></div></section>
       </main>
 
-      <footer className="site-footer"><div><span>© {new Date().getFullYear()} ניצן שלף לוי</span></div><div className="footer-links"><a href="https://nitzanshelef.myportfolio.com" target="_blank" rel="noreferrer"><img src={logoIcon} alt="Protfolio" /></a><a href="https://www.instagram.com/nitzan_shelef/" target="_blank" rel="noreferrer"><img src={instagramIcon} alt="Instagram" /></a><a href="mailto:nitzan2112@gmail.com"><img src={gmailIcon} alt="Email" /></a></div></footer>
+      <footer className="site-footer"><div><span>© {new Date().getFullYear()} ניצן שלף לוי</span></div><div className="footer-links"><a href={links.portfolio} target="_blank" rel="noreferrer"><img src={logoIcon} alt="Portfolio" /></a><a href={links.instagram} target="_blank" rel="noreferrer"><img src={instagramIcon} alt="Instagram" /></a><a href={links.email}><img src={gmailIcon} alt="Email" /></a></div></footer>
     </div>
   );
 }
