@@ -3,7 +3,7 @@ import logoIcon from './assets/logo.png';
 import instagramIcon from './assets/insagram_logo.png';
 import gmailIcon from './assets/gmail_logo.png';
 import coverImage from './assets/refinements/cover.webp';
-import projectImage from './assets/refinements/photo-1.webp';
+import projectImage from './assets/refinements/photo-3.png';
 import openBookOne from './assets/refinements/open-book-1.webp';
 import openBookTwo from './assets/refinements/open-book-2.webp';
 import isoVideo from './assets/refinements/iso.mp4';
@@ -11,8 +11,8 @@ import isoVideoTwo from './assets/refinements/iso-02.mp4';
 import sinkholeVideo from './assets/refinements/sinkhole.mp4';
 
 const purchaseOptions = [
-  { title: 'איסוף עצמי', price: '98 ₪', note: 'רכישה ואיסוף בתיאום מראש', href: 'https://mrng.to/NjxWe42Lv1' },
-  { title: 'כולל משלוח', price: '133 ₪', note: 'הספר יישלח לכתובת שתוזן בעת הרכישה', href: 'https://mrng.to/Y0cbfqulsZ' },
+  { title: 'לרכישת הספר', price: '98 ₪', note: 'רכישה ואיסוף בתיאום מראש', href: 'https://mrng.to/NjxWe42Lv1' },
+  { title: 'לרכישת הספר + משלוח', price: '133 ₪', note: 'הספר יישלח לכתובת שתוזן בעת הרכישה', href: 'https://mrng.to/Y0cbfqulsZ' },
 ];
 
 const videos = [
@@ -24,7 +24,9 @@ const videos = [
 const navItems = [
   ['הקריסה הבלתי נראית', '#project'],
   ['הבלוען', '#films'],
-  ['זה לא קרה ביום אחד', '#book-gallery'], ['אודות', '#about'], ['לרכישה', '#purchase'],
+  ['זה לא קרה ביום אחד', '#book-gallery'],
+  ['אודות', '#about'],
+  ['לרכישה', '#purchase'],
 ];
 
 const externalLinks = [
@@ -57,7 +59,6 @@ function PurchaseOptions({ compact = false }) {
           <span className="purchase-option__title">{option.title}</span>
           <span className="purchase-option__price">{option.price}</span>
           <span className="purchase-option__note">{option.note}</span>
-          <span className="purchase-option__arrow" aria-hidden="true">↗</span>
         </a>
       ))}
     </div>
@@ -145,7 +146,7 @@ export default function App() {
           {navItems.map(([label, href], index) => <a href={href} key={href} onClick={() => setDrawerOpen(false)}><span>0{index + 1}</span>{label}</a>)}
         </nav>
         <div className="drawer-external">
-          {externalLinks.map(([label, href]) => <a href={href} key={href} target={href.startsWith('http') ? '_blank' : undefined} rel={href.startsWith('http') ? 'noreferrer' : undefined}>{label}<span aria-hidden="true">↗</span></a>)}
+          {externalLinks.map(([label, href]) => <a href={href} key={href} target={href.startsWith('http') ? '_blank' : undefined} rel={href.startsWith('http') ? 'noreferrer' : undefined}>{label}</a>)}
         </div>
       </aside>
 
@@ -172,8 +173,6 @@ export default function App() {
           </div>
           <figure className="project-image" data-reveal><img src={projectImage} alt="קולאז׳ אדריכלי אנכי מתוך הקריסה הבלתי נראית" loading="lazy" /></figure>
         </section>
-
-        <section className="quote-section" aria-label="ציטוט מתוך הספר"><p data-reveal>בולען מתפתח לאט, בסתר, עד לרגע הקריסה.</p></section>
 
         <section className="video-section" id="films" aria-label="הבולען כמטאפורה להתמוטטות חברתית ופוליטית">
           <div className="video-slider" data-reveal onTouchStart={(event) => { touchStart.current = event.touches[0].clientX; }} onTouchEnd={handleTouchEnd}>
@@ -208,14 +207,14 @@ export default function App() {
             <p className="lead">ניצן שלף לוי יוצרת מרחבים משמעותיים דרך מחקר, יצירתיות וחדשנות. היא בוגרת תואר B.Arch באדריכלות מאוניברסיטת חיפה בהצטיינות.</p>
             <p>עבודתה נעה בין תכנון עירוני, עיצוב מפורט ומחקר אמנותי. היא מחפשת את נקודת המפגש שבין יצירתיות להיגיון — המקום שבו אדריכלות הופכת לכלי לביטוי, לשאלה ולפתרון.</p>
             <div className="award-list"><p><span>2025</span> חמישיית הגמר, אות האדריכלות הישראלית — ״אדריכלות המחר״</p><p><span>2024</span> מקום שלישי, אות האדריכלות הישראלית — ״אדריכלות המחר״</p></div>
-            <a className="text-link" href="https://nitzanshelef.myportfolio.com" target="_blank" rel="noreferrer">לפורטפוליו המלא <span aria-hidden="true">↗</span></a>
+            <a className="text-link" href="https://nitzanshelef.myportfolio.com" target="_blank" rel="noreferrer">לפורטפוליו המלא</a>
           </div>
         </section>
 
-        <section className="purchase-section" id="purchase"><div className="purchase-heading" data-reveal><p>ספר ביכורים מאת ניצן שלף לוי</p><h2>הקריסה<br />הבלתי נראית</h2><span>בחרו איסוף עצמי או משלוח עד הבית</span></div><div data-reveal><PurchaseOptions /></div></section>
+        <section className="purchase-section" id="purchase"><div className="purchase-heading" data-reveal><p>ספר ביכורים מאת ניצן שלף לוי</p><h2>הקריסה<br />הבלתי נראית</h2></div><div data-reveal><PurchaseOptions /></div></section>
       </main>
 
-      <footer className="site-footer"><div><span>© {new Date().getFullYear()} ניצן שלף לוי</span><span>כל הזכויות שמורות</span></div><div className="footer-links"><a href="https://nitzanshelef.myportfolio.com" target="_blank" rel="noreferrer">Portfolio</a><a href="https://www.instagram.com/nitzan_shelef/" target="_blank" rel="noreferrer"><img src={instagramIcon} alt="Instagram" /></a><a href="mailto:nitzan2112@gmail.com"><img src={gmailIcon} alt="Email" /></a></div></footer>
+      <footer className="site-footer"><div><span>© {new Date().getFullYear()} ניצן שלף לוי</span></div><div className="footer-links"><a href="https://nitzanshelef.myportfolio.com" target="_blank" rel="noreferrer"><img src={logoIcon} alt="Protfolio" /></a><a href="https://www.instagram.com/nitzan_shelef/" target="_blank" rel="noreferrer"><img src={instagramIcon} alt="Instagram" /></a><a href="mailto:nitzan2112@gmail.com"><img src={gmailIcon} alt="Email" /></a></div></footer>
     </div>
   );
 }
