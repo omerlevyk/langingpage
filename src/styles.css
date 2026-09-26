@@ -55,7 +55,7 @@ img,video { user-select:none; -webkit-user-select:none; -webkit-user-drag:none; 
 .section-number { display:block; font-family:'Playfair Display',serif; font-size:clamp(2.2rem,5vw,5rem); font-style:normal; font-weight:400; line-height:1; letter-spacing:normal; }
 .section-index p { color:var(--muted); font-size:.8rem; line-height:1.8; }
 .eyebrow { margin:0 0 1rem; color:var(--muted); font-size:.72rem; letter-spacing:.14em; }
-.project-copy h2,.section-heading h2,.about-copy h2,.purchase-heading h2 { margin:0; font-size:clamp(2.3rem,4.6vw,5.2rem); font-weight:300; line-height:1.05; letter-spacing:-.03em; }
+.project-copy h2,.section-heading h2,.purchase-heading h2 { margin:0; font-size:clamp(2.3rem,4.6vw,5.2rem); font-weight:300; line-height:1.05; letter-spacing:-.03em; }
 .project-copy { display:flex; justify-content:flex-start; }
 .back-cover-copy { width:100%; max-width:42ch; color:var(--muted); font-size:clamp(.92rem,1.05vw,1.08rem); line-height:1.9; }
 .back-cover-copy p { margin:0 0 1.2rem; text-align:justify; text-align-last:right; }
@@ -92,6 +92,7 @@ img,video { user-select:none; -webkit-user-select:none; -webkit-user-drag:none; 
 .about-mark .about-portrait { display:block; width:100%; height:auto; }
 .about-label { position:absolute; z-index:1; top:-6.75rem; right:0; width:max-content; }
 .about-label p { margin:.45rem 0 0; font-size:.8rem; line-height:1; }
+.about-copy h3 { margin:0; font-size:clamp(1.68rem,2.25vw,2.175rem); font-weight:300; line-height:1.05; letter-spacing:-.03em; }
 .about-copy .lead { margin-top:2rem; font-size:clamp(1.12rem,1.5vw,1.45rem); line-height:1.75; }
 .about-copy>p:not(.eyebrow):not(.lead) { color:var(--muted); line-height:1.9; }
 .award-list { margin:2.5rem 0; border-top:1px solid var(--line); }
