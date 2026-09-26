@@ -130,7 +130,13 @@ export default function App() {
   };
 
   return (
-    <div className="site-shell" dir="rtl" lang="he">
+    <div
+      className="site-shell"
+      dir="rtl"
+      lang="he"
+      onContextMenu={(event) => { if (event.target instanceof HTMLImageElement || event.target instanceof HTMLVideoElement) event.preventDefault(); }}
+      onDragStart={(event) => { if (event.target instanceof HTMLImageElement || event.target instanceof HTMLVideoElement) event.preventDefault(); }}
+    >
       <header className="site-header">
         <a className="wordmark" href="#book" aria-label="ניצן שלף לוי — לראש העמוד">ניצן שלף לוי</a>
       </header>
@@ -147,7 +153,7 @@ export default function App() {
       </button>
       <button className="edge-control edge-control--shop" onClick={() => { setDrawerOpen(false); setShopOpen(true); }} aria-expanded={shopOpen}><span>לרכישה</span><span aria-hidden="true">→</span></button>
 
-      <button className={`page-backdrop${overlayOpen ? ' is-open' : ''}${drawerOpen ? ' is-blurred' : ''}`} aria-label="סגירת חלון" tabIndex={overlayOpen ? 0 : -1} onClick={closeOverlays} />
+      <button className={`page-backdrop${overlayOpen ? ' is-open is-blurred' : ''}`} aria-label="סגירת חלון" tabIndex={overlayOpen ? 0 : -1} onClick={closeOverlays} />
 
       <aside className={`contents-drawer${drawerOpen ? ' is-open' : ''}`} aria-hidden={!drawerOpen} aria-label="תוכן וקישורים" onMouseLeave={() => setDrawerOpen(false)}>
         <button ref={drawerCloseRef} className="overlay-close" onClick={() => setDrawerOpen(false)} aria-label="סגירת תפריט">×</button>
@@ -190,7 +196,7 @@ export default function App() {
               <div className="media-label media-label--video"><span className="section-number">02</span><p>הבולען כמטאפורה<br />להתמוטטות חברתית ופוליטית</p></div>
               {videos.map((video, index) => (
                 <figure className={`video-slide${index === activeVideo ? ' is-active' : ''}`} aria-hidden={index !== activeVideo} key={video.src}>
-                  <video ref={(node) => { videoRefs.current[index] = node; }} src={video.src} aria-label={video.alt} muted loop playsInline preload={index === 0 ? 'auto' : 'metadata'} />
+                  <video className={video.src === isoVideoTwo ? 'video--crop-bars' : undefined} ref={(node) => { videoRefs.current[index] = node; }} src={video.src} aria-label={video.alt} muted loop playsInline preload={index === 0 ? 'auto' : 'metadata'} />
                 </figure>
               ))}
               <div className="video-controls">
