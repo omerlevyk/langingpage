@@ -11,6 +11,7 @@ button { border:0; }
 a { text-decoration:none; }
 img,video { max-width:100%; }
 img,video { user-select:none; -webkit-user-select:none; -webkit-user-drag:none; }
+.sr-only { position:absolute!important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
 .site-shell { min-height:100vh; background:var(--paper); }
 
 .site-header { position:absolute; z-index:15; inset:0 0 auto; display:flex; direction:ltr; padding:2rem var(--space); pointer-events:none; }

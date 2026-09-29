@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://studionsl.com/</loc>
+    <lastmod>2026-09-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://studionsl.com/cover.jpeg</image:loc>
+      <image:title>הקריסה הבלתי נראית — ניצן שלף לוי / Nitzan Shelef Levy — StudioNSL</image:title>
+    </image:image>
+  </url>
+</urlset>

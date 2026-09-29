@@ -138,6 +138,8 @@ export default function App() {
       onContextMenu={(event) => { if (event.target instanceof HTMLImageElement || event.target instanceof HTMLVideoElement) event.preventDefault(); }}
       onDragStart={(event) => { if (event.target instanceof HTMLImageElement || event.target instanceof HTMLVideoElement) event.preventDefault(); }}
     >
+      <h1 className="sr-only">ניצן שלף לוי — Nitzan Shelef Levy — StudioNSL — הקריסה הבלתי נראית</h1>
+      <p className="sr-only">ניצן שלף (ניצן שלף לוי / Nitzan Shelef / Nitzan Shelef Levy), אדריכלית ואמנית, מייסדת StudioNSL (studionsl). "הקריסה הבלתי נראית" — ספר אדריכלות ופרוזה פואטית.</p>
       <header className="site-header">
         <a className="wordmark" href="#book" aria-label="ניצן שלף לוי — לראש העמוד">ניצן שלף לוי</a>
       </header>
@@ -175,7 +177,7 @@ export default function App() {
 
       <main>
         <section className="hero" id="book" aria-label="הקריסה הבלתי נראית">
-          <img className="hero-image" src={coverImage} alt="הספר הקריסה הבלתי נראית מוצג בכריכה סגורה ובמפתח פנימי" fetchPriority="high" />
+          <img className="hero-image" src={coverImage} alt="הקריסה הבלתי נראית — ספר מאת ניצן שלף לוי (StudioNSL), מוצג בכריכה סגורה ובמפתח פנימי" fetchPriority="high" />
         </section>
 
         <section className="project-intro section-frame" id="project">
