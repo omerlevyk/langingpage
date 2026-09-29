@@ -111,7 +111,7 @@ img,video { user-select:none; -webkit-user-select:none; -webkit-user-drag:none; 
 .purchase-option:hover,.purchase-option:focus-visible { background:var(--ink); color:#fff; }
 .purchase-option:hover { transform:translateY(-3px); }
 .purchase-option__title { font-size:1.05rem; font-weight:500; }
-.purchase-option__price { grid-row:span 2; font-family:'Playfair Display',serif; font-size:2rem; }
+.purchase-option__price { grid-row:span 2; font-size:2rem; }
 .purchase-options--compact .purchase-option__price { grid-row:auto; }
 .purchase-option__note { font-size:.7rem; opacity:.68; }
 .purchase-option__arrow { position:absolute; left:-.6rem; bottom:-.7rem; width:1.6rem; height:1.6rem; display:grid; place-items:center; background:var(--pink); color:var(--ink); }
