@@ -1,5 +1,0 @@
-only mobile fixes! keep the pc web version the same !!
-
-1. make 'ניצן שלף לוי' x0.7 in size
-2. make the '01' highter
-3. make the nitzan.jpg image in the about section x0.5 in size

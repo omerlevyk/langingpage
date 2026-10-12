@@ -1,16 +1,20 @@
 import { useEffect, useRef, useState } from 'react';
-import logoIcon from './assets/logo.png';
-import instagramIcon from './assets/insagram_logo.png';
-import gmailIcon from './assets/gmail_logo.png';
+
+import logoIcon from './assets/logos/logo.png';
+import instagramIcon from './assets/logos/insagram_logo.png';
+import gmailIcon from './assets/logos/gmail_logo.png';
+
+import isoVideo from './assets/videos/iso.mp4';
+import isoVideoTwo from './assets/videos/iso-02.mp4';
+import sinkholeVideo from './assets/videos/sinkhole.mp4';
+
 import coverImage from './assets/refinements/cover.webp';
 import projectImage from './assets/refinements/photo-3.png';
 import openBookOne from './assets/refinements/open-book-1.webp';
 import openBookTwo from './assets/refinements/open-book-2.webp';
-import isoVideo from './assets/refinements/iso.mp4';
-import isoVideoTwo from './assets/refinements/iso-02.mp4';
-import sinkholeVideo from './assets/refinements/sinkhole.mp4';
+
 import nitzanMobilePortrait from './assets/refinements/nitzan_mobile.jpg';
-import nitzanPortrait from '../book-sources/nitzan.jpg';
+import nitzanPortrait from './assets/photoshot/face.webp';
 
 const links = {
   portfolio: 'https://nitzanshelef.myportfolio.com',
@@ -245,7 +249,7 @@ export default function App() {
         <section className="purchase-section" id="purchase"><div className="purchase-heading" data-reveal><p>ספר ביכורים מאת ניצן שלף לוי</p><h2>הקריסה<br />הבלתי נראית</h2></div><div data-reveal><PurchaseOptions /></div></section>
       </main>
 
-      <footer className="site-footer"><div><span>© {new Date().getFullYear()} ניצן שלף לוי</span></div><div className="footer-links"><a href={links.portfolio} target="_blank" rel="noreferrer"><img src={logoIcon} alt="Portfolio" /></a><a href={links.instagram} target="_blank" rel="noreferrer"><img src={instagramIcon} alt="Instagram" /></a><a href={links.email}><img src={gmailIcon} alt="Email" /></a></div></footer>
+      <footer className="site-footer"><div><span>© {new Date().getFullYear()} ניצן שלף לוי</span><span>צילום: יובל אורבך</span></div><div className="footer-links"><a href={links.portfolio} target="_blank" rel="noreferrer"><img src={logoIcon} alt="Portfolio" /></a><a href={links.instagram} target="_blank" rel="noreferrer"><img src={instagramIcon} alt="Instagram" /></a><a href={links.email}><img src={gmailIcon} alt="Email" /></a></div></footer>
     </div>
   );
 }

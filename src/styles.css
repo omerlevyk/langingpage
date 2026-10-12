@@ -90,8 +90,9 @@ img,video { user-select:none; -webkit-user-select:none; -webkit-user-drag:none; 
 
 .about-section { min-height:95vh; display:grid; grid-template-columns:.7fr 1.3fr; gap:clamp(3rem,10vw,11rem); align-items:center; padding-block:clamp(7rem,12vw,12rem); }
 .about-mark { position:relative; min-height:0; overflow:visible; background:var(--pink-pale); }
-.about-portrait-frame { width:100%; }
-.about-mark .about-portrait { display:block; width:100%; height:auto; }
+.about-portrait-frame { width:100%; aspect-ratio:1/1; overflow:hidden; }
+.about-portrait-frame picture { display:block; width:100%; height:100%; }
+.about-mark .about-portrait { display:block; width:100%; height:100%; object-fit:cover; object-position:center; filter:grayscale(.8); }
 .about-label { position:absolute; z-index:1; top:-6.75rem; right:0; width:max-content; }
 .about-label p { margin:.45rem 0 0; font-size:.8rem; line-height:1; }
 .about-copy h3 { margin:0; font-size:clamp(1.68rem,2.25vw,2.175rem); font-weight:300; line-height:1.05; letter-spacing:-.03em; }
@@ -169,7 +170,7 @@ img,video { user-select:none; -webkit-user-select:none; -webkit-user-drag:none; 
   .about-mark { grid-column:1; grid-row:2/4; width:auto; min-height:0; height:auto; align-self:start; justify-self:stretch; background:transparent; }
   .about-portrait-frame { position:static; overflow:visible; }
   .about-portrait-frame picture { display:block; width:100%; height:auto; }
-  .about-mark .about-portrait { width:100%; height:auto; object-fit:contain; object-position:center; filter:none; }
+  .about-mark .about-portrait { width:100%; height:auto; object-fit:contain; object-position:center; }
   .about-label { top:-4rem; right:0; }
   .about-copy,.about-intro { display:contents; }
   .about-intro h3 { position:relative; top:.75rem; right:-2rem; grid-column:2; grid-row:1; justify-self:center; text-align:center; }
