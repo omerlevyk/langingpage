@@ -8,13 +8,18 @@ import isoVideo from './assets/videos/iso.mp4';
 import isoVideoTwo from './assets/videos/iso-02.mp4';
 import sinkholeVideo from './assets/videos/sinkhole.mp4';
 
-import coverImage from './assets/refinements/cover.webp';
 import projectImage from './assets/refinements/photo-3.png';
-import openBookOne from './assets/refinements/open-book-1.webp';
-import openBookTwo from './assets/refinements/open-book-2.webp';
+import heroPhotoFour from './assets/photos/web/photo04.webp';
+import heroPhotoEleven from './assets/photos/web/photo11.webp';
+import heroPhotoEight from './assets/photos/web/photo08.webp';
+import galleryPhotoNine from './assets/photos/web/photo09.webp';
+import galleryPhotoTwelve from './assets/photos/web/photo12.webp';
+import galleryPhotoUvph4025 from './assets/photos/web/UVPH4025.webp';
+import galleryPhotoThree from './assets/photos/web/photo03.webp';
+import galleryPhotoTwo from './assets/photos/web/photo02.webp';
 
-import nitzanMobilePortrait from './assets/refinements/nitzan_mobile.jpg';
-import nitzanPortrait from './assets/photoshot/face.webp';
+import nitzanMobilePortrait from './assets/photos/web/photo13.webp';
+import nitzanPortrait from './assets/photos/web/photo14.webp';
 
 const links = {
   portfolio: 'https://nitzanshelef.myportfolio.com',
@@ -33,6 +38,20 @@ const videos = [
   { src: isoVideo, label: 'ISO / 01', alt: 'הדמיה אדריכלית של הפרויקט הקריסה הבלתי נראית' },
   { src: isoVideoTwo, label: 'ISO / 02', alt: 'הדמיה אדריכלית נוספת של הפרויקט' },
   { src: sinkholeVideo, label: 'SINKHOLE / 03', alt: 'הדמיית הבולען והמרחב העירוני' },
+];
+
+const heroImages = [
+  { src: heroPhotoFour, alt: 'שני עותקים של הספר הקריסה הבלתי נראית מונחים זה על גבי זה' },
+  { src: heroPhotoEleven, alt: 'הכריכה הקדמית והכריכה האחורית של הספר הקריסה הבלתי נראית' },
+  { src: heroPhotoEight, alt: 'תקריב של הספר הקריסה הבלתי נראית לצד עמודיו הפתוחים' },
+];
+
+const bookGalleryImages = [
+  { src: galleryPhotoNine, alt: 'הספר הקריסה הבלתי נראית פתוח בעמודי הפתיחה' },
+  { src: galleryPhotoTwelve, alt: 'הספר פתוח בכפולת עמודים מאוירת בשחור ולבן' },
+  { src: galleryPhotoUvph4025, alt: 'יד מדפדפת בספר הפתוח ומציגה כפולת עמודים מאוירת' },
+  { src: galleryPhotoThree, alt: 'ידיים אוחזות בספר הפתוח מעל כפולת עמודים אדריכלית' },
+  { src: galleryPhotoTwo, alt: 'תקריב של כפולת עמודים כהה מתוך הספר' },
 ];
 
 const navItems = [
@@ -80,6 +99,7 @@ function PurchaseOptions({ compact = false }) {
 }
 
 export default function App() {
+  const [activeHeroImage, setActiveHeroImage] = useState(0);
   const [activeVideo, setActiveVideo] = useState(0);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [shopOpen, setShopOpen] = useState(false);
@@ -89,6 +109,38 @@ export default function App() {
   const touchStart = useRef(null);
   useReveal();
   const overlayOpen = drawerOpen || shopOpen;
+
+  useEffect(() => {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let initialTimeoutId;
+    let intervalId;
+
+    const configureRotation = () => {
+      window.clearTimeout(initialTimeoutId);
+      window.clearInterval(intervalId);
+      if (reducedMotion.matches) {
+        setActiveHeroImage(0);
+        return;
+      }
+
+      const advanceImage = () => {
+        setActiveHeroImage((current) => (current + 1) % heroImages.length);
+      };
+
+      initialTimeoutId = window.setTimeout(() => {
+        advanceImage();
+        intervalId = window.setInterval(advanceImage, 10000);
+      }, 7500);
+    };
+
+    configureRotation();
+    reducedMotion.addEventListener('change', configureRotation);
+    return () => {
+      window.clearTimeout(initialTimeoutId);
+      window.clearInterval(intervalId);
+      reducedMotion.removeEventListener('change', configureRotation);
+    };
+  }, []);
 
   useEffect(() => {
     if (!overlayOpen) return undefined;
@@ -181,7 +233,17 @@ export default function App() {
 
       <main>
         <section className="hero" id="book" aria-label="הקריסה הבלתי נראית">
-          <img className="hero-image" src={coverImage} alt="הקריסה הבלתי נראית — ספר מאת ניצן שלף לוי (StudioNSL), מוצג בכריכה סגורה ובמפתח פנימי" fetchPriority="high" />
+          {heroImages.map((image, index) => (
+            <img
+              className={`hero-image${index === activeHeroImage ? ' is-active' : ''}`}
+              src={image.src}
+              alt={image.alt}
+              aria-hidden={index !== activeHeroImage}
+              fetchPriority={index === 0 ? 'high' : 'auto'}
+              loading={index === 0 ? 'eager' : 'lazy'}
+              key={image.src}
+            />
+          ))}
         </section>
 
         <section className="project-intro section-frame" id="project">
@@ -216,11 +278,12 @@ export default function App() {
         </section>
 
         <section className="book-gallery" id="book-gallery" aria-label="זה לא קרה ביום אחד">
-          <figure data-reveal>
-            <img src={openBookOne} alt="הספר הקריסה הבלתי נראית פתוח ומציג עמודים פנימיים" loading="lazy" />
-            <div className="media-label media-label--book"><span className="section-number">03</span><p>זה לא קרה ביום אחד</p></div>
-          </figure>
-          <figure data-reveal><img src={openBookTwo} alt="מבט נוסף על הספר הפתוח והכריכה" loading="lazy" /></figure>
+          {bookGalleryImages.map((image, index) => (
+            <figure data-reveal key={image.src}>
+              <img src={image.src} alt={image.alt} loading="lazy" />
+              {index === 0 && <div className="media-label media-label--book"><span className="section-number">03</span><p>זה לא קרה ביום אחד</p></div>}
+            </figure>
+          ))}
         </section>
 
         <section className="about-section section-frame" id="about">

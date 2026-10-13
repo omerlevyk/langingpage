@@ -46,8 +46,9 @@ img,video { user-select:none; -webkit-user-select:none; -webkit-user-drag:none; 
 .shop-panel__intro span { color:var(--muted); font-size:.68rem; }
 .shop-panel__intro h2 { margin:.2rem 0 0; font-size:clamp(1.2rem,2vw,1.75rem); font-weight:300; }
 
-.hero { position:relative; width:100%; background:#efeff0; }
-.hero-image { display:block; width:100%; height:auto; }
+.hero { position:relative; width:100%; aspect-ratio:3/2; overflow:hidden; background:#efeff0; }
+.hero-image { position:absolute; inset:0; display:block; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 2500ms ease-in-out; }
+.hero-image.is-active { z-index:1; opacity:1; }
 
 .section-frame { padding-inline:var(--space); }
 .project-intro { --project-block-space:clamp(6rem,10vw,10rem); display:grid; grid-template-columns:.42fr 1.15fr .58fr; gap:clamp(2rem,5vw,6rem); align-items:stretch; padding-block:var(--project-block-space); background:var(--bright); }
@@ -88,11 +89,11 @@ img,video { user-select:none; -webkit-user-select:none; -webkit-user-drag:none; 
 .book-gallery img { display:block; width:100%; height:auto; }
 .media-label--book { top:var(--space); right:var(--space); color:var(--ink); text-shadow:0 1px 12px rgba(255,255,255,.8); }
 
-.about-section { min-height:95vh; display:grid; grid-template-columns:.7fr 1.3fr; gap:clamp(3rem,10vw,11rem); align-items:center; padding-block:clamp(7rem,12vw,12rem); }
-.about-mark { position:relative; min-height:0; overflow:visible; background:var(--pink-pale); }
-.about-portrait-frame { width:100%; aspect-ratio:1/1; overflow:hidden; }
+.about-section { min-height:95vh; display:grid; grid-template-columns:.7fr 1.3fr; gap:clamp(.75rem,2vw,2rem); align-items:center; padding-block:clamp(7rem,12vw,12rem); }
+.about-mark { position:relative; width:65%; min-height:0; justify-self:center; overflow:visible; background:var(--pink-pale); }
+.about-portrait-frame { width:100%; aspect-ratio:1601/2400; overflow:hidden; }
 .about-portrait-frame picture { display:block; width:100%; height:100%; }
-.about-mark .about-portrait { display:block; width:100%; height:100%; object-fit:cover; object-position:center; filter:grayscale(.8); }
+.about-mark .about-portrait { display:block; width:100%; height:100%; object-fit:contain; object-position:center; }
 .about-label { position:absolute; z-index:1; top:-6.75rem; right:0; width:max-content; }
 .about-label p { margin:.45rem 0 0; font-size:.8rem; line-height:1; }
 .about-copy h3 { margin:0; font-size:clamp(1.68rem,2.25vw,2.175rem); font-weight:300; line-height:1.05; letter-spacing:-.03em; }
@@ -114,6 +115,7 @@ img,video { user-select:none; -webkit-user-select:none; -webkit-user-drag:none; 
 .purchase-option:hover { transform:translateY(-3px); }
 .purchase-option__title { font-size:1.05rem; font-weight:500; }
 .purchase-option__price { grid-row:span 2; font-size:2rem; }
+.purchase-section .purchase-option__price { font-size:1.6rem; }
 .purchase-options--compact .purchase-option__price { grid-row:auto; }
 .purchase-option__note { font-size:.7rem; opacity:.68; }
 .purchase-option__arrow { position:absolute; left:-.6rem; bottom:-.7rem; width:1.6rem; height:1.6rem; display:grid; place-items:center; background:var(--pink); color:var(--ink); }
@@ -147,7 +149,7 @@ img,video { user-select:none; -webkit-user-select:none; -webkit-user-drag:none; 
   .site-header { padding-top:1.3rem; }
   .wordmark { font-size:.875rem; }
   .hero { aspect-ratio:4/5; overflow:hidden; }
-  .hero-image { width:100%; height:100%; object-fit:cover; object-position:center; }
+  .hero-image { object-position:center; }
   .video-section { border-bottom:4.5rem solid var(--bright); }
   .edge-control span:not(.menu-glyph) { font-size:.65rem; }
   .edge-control--contents { padding-inline:.8rem; }
@@ -168,7 +170,7 @@ img,video { user-select:none; -webkit-user-select:none; -webkit-user-drag:none; 
   .purchase-section { min-height:auto; padding-block:4rem; }
   .about-section { grid-template-columns:minmax(0,3fr) minmax(0,7fr); column-gap:1rem; row-gap:2.5rem; align-items:start; }
   .about-mark { grid-column:1; grid-row:2/4; width:auto; min-height:0; height:auto; align-self:start; justify-self:stretch; background:transparent; }
-  .about-portrait-frame { position:static; overflow:visible; }
+  .about-portrait-frame { position:static; aspect-ratio:auto; overflow:visible; }
   .about-portrait-frame picture { display:block; width:100%; height:auto; }
   .about-mark .about-portrait { width:100%; height:auto; object-fit:contain; object-position:center; }
   .about-label { top:-4rem; right:0; }
