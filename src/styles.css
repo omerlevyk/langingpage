@@ -144,7 +144,7 @@ img,video { user-select:none; -webkit-user-select:none; -webkit-user-drag:none; 
 }
 
 @media (max-width:560px) {
-  :root { --space:1.25rem; }
+  :root { --space:1.25rem; --mobile-section-strip:4.5rem; }
   .book-gallery figure:not(:last-child)::after { content:""; display:block; height:clamp(1.5rem,2vw,2.5rem); background:#eee; }
   .section-index p,.media-label p { display:none; }
   .site-header { padding-top:1.3rem; }
@@ -166,7 +166,8 @@ img,video { user-select:none; -webkit-user-select:none; -webkit-user-drag:none; 
   .project-image[data-reveal].is-visible { opacity:.5; }
   .project-image img { object-position:top; }
   .project-intro,.about-section,.purchase-section { padding-block:6rem; }
-  .project-intro { padding-bottom:4.5rem; }
+  .project-intro { padding-bottom:var(--mobile-section-strip); }
+  .video-section { border-bottom-width:var(--mobile-section-strip); }
   .purchase-section { min-height:auto; padding-block:4rem; }
   .about-section { grid-template-columns:minmax(0,3fr) minmax(0,7fr); column-gap:1rem; row-gap:2.5rem; align-items:start; }
   .about-mark { grid-column:1; grid-row:2/4; width:auto; min-height:0; height:auto; align-self:start; justify-self:stretch; background:transparent; }
