@@ -67,6 +67,7 @@ Create a visually strong, elegant landing page inspired by Nitzan's final projec
 6. Polish
 7. Final review
 
+and done yay!
 ## Notes
 - Keep the design elegant and not crowded
 - Focus on atmosphere and storytelling
