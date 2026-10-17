@@ -86,7 +86,6 @@ img,video { user-select:none; -webkit-user-select:none; -webkit-user-drag:none; 
 
 .book-gallery { padding:0; background:var(--bright); }
 .book-gallery figure { position:relative; width:100%; margin:0; }
-.book-gallery figure:not(:last-child)::after { content:""; display:block; height:clamp(1.5rem,2vw,2.5rem); background:#eee; }
 .book-gallery img { display:block; width:100%; height:auto; }
 .media-label--book { top:var(--space); right:var(--space); color:var(--ink); text-shadow:0 1px 12px rgba(255,255,255,.8); }
 
@@ -146,6 +145,7 @@ img,video { user-select:none; -webkit-user-select:none; -webkit-user-drag:none; 
 
 @media (max-width:560px) {
   :root { --space:1.25rem; }
+  .book-gallery figure:not(:last-child)::after { content:""; display:block; height:clamp(1.5rem,2vw,2.5rem); background:#eee; }
   .section-index p,.media-label p { display:none; }
   .site-header { padding-top:1.3rem; }
   .wordmark { font-size:.875rem; }
