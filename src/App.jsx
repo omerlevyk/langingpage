@@ -12,10 +12,11 @@ import projectImage from './assets/refinements/photo-3.png';
 import heroPhotoFour from './assets/photos/web/photo04.webp';
 import heroPhotoEleven from './assets/photos/web/photo11.webp';
 import heroPhotoEight from './assets/photos/web/photo08.webp';
-import galleryPhotoNine from './assets/photos/web/photo09.webp';
-import galleryPhotoTwelve from './assets/photos/web/photo12.webp';
-import galleryPhotoUvph4025 from './assets/photos/web/UVPH4025.webp';
-import galleryPhotoThree from './assets/photos/web/photo03.webp';
+import galleryPhotoYuval023 from './assets/photoshot/YuvalUrbach023.jpg';
+import galleryPhotoYuval025 from './assets/photoshot/YuvalUrbach025.jpg';
+import galleryPhotoYuval053 from './assets/photoshot/YuvalUrbach053.jpg';
+import galleryPhotoYuval146 from './assets/photoshot/YuvalUrbach146.jpg';
+import galleryPhotoYuvalFinal from './assets/photoshot/516C91A5-4FF0-486C-96B8-7A6517FBD295.jpg';
 import galleryPhotoTwo from './assets/photos/web/photo02.webp';
 
 import nitzanMobilePortrait from './assets/photos/web/photo13.webp';
@@ -47,10 +48,11 @@ const heroImages = [
 ];
 
 const bookGalleryImages = [
-  { src: galleryPhotoNine, alt: 'הספר הקריסה הבלתי נראית פתוח בעמודי הפתיחה' },
-  { src: galleryPhotoTwelve, alt: 'הספר פתוח בכפולת עמודים מאוירת בשחור ולבן' },
-  { src: galleryPhotoUvph4025, alt: 'יד מדפדפת בספר הפתוח ומציגה כפולת עמודים מאוירת' },
-  { src: galleryPhotoThree, alt: 'ידיים אוחזות בספר הפתוח מעל כפולת עמודים אדריכלית' },
+  { src: galleryPhotoYuval023, alt: 'הספר הקריסה הבלתי נראית — צילום מאת יובל אורבך' },
+  { src: galleryPhotoYuval025, alt: 'הספר הקריסה הבלתי נראית — צילום מאת יובל אורבך' },
+  { src: galleryPhotoYuval053, alt: 'הספר הקריסה הבלתי נראית — צילום מאת יובל אורבך' },
+  { src: galleryPhotoYuval146, alt: 'הספר הקריסה הבלתי נראית — צילום מאת יובל אורבך' },
+  { src: galleryPhotoYuvalFinal, alt: 'הספר הקריסה הבלתי נראית — צילום מאת יובל אורבך' },
   { src: galleryPhotoTwo, alt: 'תקריב של כפולת עמודים כהה מתוך הספר' },
 ];
 
